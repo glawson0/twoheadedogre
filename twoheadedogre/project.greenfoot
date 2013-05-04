@@ -1,4 +1,37 @@
-#Greenfoot properties
-#Thu May 02 17:12:24 PDT 2013
+#Greenfoot project file
+class.GrassWorld.image=grass.png
+class.GrassWorld.superclass=greenfoot.World
+class.Ogre.image=ppl1.png
+class.Ogre.superclass=greenfoot.Actor
+mainWindow.height=840
+mainWindow.width=1282
+mainWindow.x=40
+mainWindow.y=40
+package.numDependencies=0
+package.numTargets=2
 project.charset=UTF-8
+target1.editor.height=700
+target1.editor.width=900
+target1.editor.x=40
+target1.editor.y=20
+target1.height=50
+target1.name=GrassWorld
+target1.naviview.expanded=true
+target1.showInterface=false
+target1.type=ClassTarget
+target1.width=90
+target1.x=70
+target1.y=10
+target2.editor.height=700
+target2.editor.width=900
+target2.editor.x=675
+target2.editor.y=233
+target2.height=50
+target2.name=Ogre
+target2.showInterface=false
+target2.type=ClassTarget
+target2.width=80
+target2.x=170
+target2.y=10
 version=2.4.0
+world.lastInstantiated=GrassWorld
