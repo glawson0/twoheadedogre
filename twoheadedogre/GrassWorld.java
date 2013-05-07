@@ -17,5 +17,10 @@ public class GrassWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(700, 600, 1); 
+        populate();
+    }
+    
+    public void populate() {
+        addObject(new Face(true),50,50);
     }
 }
