@@ -25,6 +25,20 @@ public class Enemy extends SoundActor
         for(Actor obj: objs){
             if (obj instanceof Ogre){
                 getWorld().removeObject(this);
+            }else{
+                int x=0;
+                int y=0;
+                if( getX()< obj.getX()){
+                    x-=5;
+                }else if( getX()> obj.getX()){
+                    x+=5;
+                }
+                if( getY()< obj.getY()){
+                    y-=5;
+                }else if( getY()> obj.getY()){
+                    y+=5;
+                }
+                setLocation(getX()+x, getY()+y);
             }
         }
     }
