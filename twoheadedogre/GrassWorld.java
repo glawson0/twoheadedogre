@@ -13,14 +13,19 @@ public class GrassWorld extends World
      * Constructor for objects of class GrassWorld.
      * 
      */
+    public Ogre ogre;
+    public Face face;
     public GrassWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(700, 600, 1); 
+        super(700, 600, 1);
+        face = new Face(true);
+        ogre = new Ogre(new ImagePackage(), face);
         populate();
     }
     
     public void populate() {
-        addObject(new Face(true),50,50);
+        addObject(face,50,50);
+        addObject(ogre, 350, 300);
     }
 }

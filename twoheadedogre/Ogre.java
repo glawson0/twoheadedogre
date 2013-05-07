@@ -8,9 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Ogre extends AnimatedActor
 {
-    public Ogre(ImagePackage imgPack) {
-        super(imgPack);
-    }
+   
     
     /**
      * Act - do whatever the Ogre wants to do. This method is called whenever
@@ -22,6 +20,12 @@ public class Ogre extends AnimatedActor
     private static final int NORTH = 2;
     private static final int SOUTH = 3;
     private int switchWait =0;
+    private Face face;
+     public Ogre(ImagePackage imgPack, Face face) {
+        super(imgPack);
+        this.face=face;
+    }
+    
     public void act() 
     {
         if(switchWait<1){
@@ -35,6 +39,8 @@ public class Ogre extends AnimatedActor
     private void switchHead(){
         if (Greenfoot.isKeyDown("s")){
             walking= !walking;
+            face.face=walking;
+            face.change();
         }
     }
     private void procInput(){
