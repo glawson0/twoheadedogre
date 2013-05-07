@@ -9,32 +9,49 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class AnimatedActor extends Actor
 {
     private ImagePackage imgPack;
+    
+    /* Boolean to be set when actor is attacking. */
     private boolean isAttacking;
+    
+    /* Timers and indexes for imgPack. */
     private int attackTimer;
+    private int currIdle;
     private int idleTimer;
+    private int currUp;
     private int upTimer;
+    private int currRight;
     private int rightTimer;
+    private int currDown;
     private int downTimer;
+    private int currLeft;
     private int leftTimer;
     
+    /* Integer flags for timing animations. */
+    int isIdle;
+    int isMovingUp;
+    int isMovingRight;
+    int isMovingDown;
+    int isMovingLeft;
+    
     /**
-     * Construct an animated actor. This assumes that you have provided image
-     * file (in the 'images' folder) named 'basenameN.suffix', where N is
-     * [0..numberOfImages-1].
+     * Construct an animated actor.
      * 
-     * @param basename  The base name of the image files.
-     * @param suffix  The suffix of the image files (must include the ".").
-     * @param noOfImages  The number of images to be use din the animation.
+     * @param imgPack The ImagePackage to be associated with the actor.
      */
     public AnimatedActor(ImagePackage imgPack)
     {
         this.imgPack = imgPack;
         isAttacking = false;
         attackTimer = 0;
+        currIdle = 0;
         idleTimer = 0;
+        currUp = 0;
         upTimer = 0;
+        currRight = 0;
         rightTimer = 0;
+        currDown = 0;
         downTimer = 0;
+        currLeft = 0;
         leftTimer = 0;
     }
     
@@ -51,38 +68,60 @@ public class AnimatedActor extends Actor
         if (!isAttacking) {
             if (Greenfoot.isKeyDown("up")) {
                 resetTimers("up");
+                resetIndexes("up");
+                
+                if (upTimer == 0) {
+                    currUp = (currUp + 1) % imgPack.imgArrayLen("up");
+                    setImage(imgPack.getImage("up",currUp));
+                }
                 upTimer = (upTimer + 1) % 60;
-                if (upTimer == 0)
-                    setImage(imgPack.getImage("up"));
             }
             else if (Greenfoot.isKeyDown("right")) {
                 resetTimers("right");
+                resetIndexes("right");
+                
+                if (rightTimer == 0) {
+                    currRight = (currRight + 1) % imgPack.imgArrayLen("right");
+                    setImage(imgPack.getImage("right",currRight));
+                }
                 rightTimer = (rightTimer + 1) % 60;
-                if (rightTimer == 0)
-                    setImage(imgPack.getImage("right"));
             }
             else if (Greenfoot.isKeyDown("down")) {
                 resetTimers("down");
+                resetIndexes("down");
+                
+                if (downTimer == 0) {
+                    currDown = (currDown + 1) % imgPack.imgArrayLen("down");
+                    setImage(imgPack.getImage("down",currDown));
+                }
                 downTimer = (downTimer + 1) % 60;
-                if (downTimer == 0)
-                    setImage(imgPack.getImage("down"));
             }
             else if (Greenfoot.isKeyDown("left")) {
                 resetTimers("left");
+                resetIndexes("left");
+                
+                if (leftTimer == 0) {
+                    currLeft = (currLeft + 1) % imgPack.imgArrayLen("left");
+                    setImage(imgPack.getImage("left",currLeft));
+                }
                 leftTimer = (leftTimer + 1) % 60;
-                if (leftTimer == 0)
-                    setImage(imgPack.getImage("left"));
             }
             else {
                 resetTimers("idle");
+                resetIndexes("idle");
+                
+                if (idleTimer == 0) {
+                    currIdle = (currIdle + 1) % imgPack.imgArrayLen("idle");
+                    setImage(imgPack.getImage("idle",currIdle));
+                }
                 idleTimer = (idleTimer + 1) % 60;
-                if (idleTimer == 0)
-                    setImage(imgPack.getImage("idle"));
             }
         }
         else {
-            attackTimer = (attackTimer + 1) % 60;
+            resetTimers("idle");
+            resetIndexes("idle");
             
+            attackTimer = (attackTimer + 1) % 60;
             if (attackTimer == 0) {
                 isAttacking = false;
                 setImage();
@@ -141,6 +180,46 @@ public class AnimatedActor extends Actor
             rightTimer = 0;
             downTimer = 0;
             leftTimer = 0;
+        }
+    }
+    
+    /**
+     * Resets array indexes and timers for animation purposes.
+     * Direction should be the direction being currently animated.
+     * 
+     * @param direction "up" "right" "down" "left"
+     *                  => any other string will reset as idle.
+     */
+    public void resetIndexes(String direction) {
+        if (direction.equals("up")) {
+            currIdle = 0;
+            currRight = 0;
+            currDown = 0;
+            currLeft = 0;
+        }
+        else if (direction.equals("right")) {
+            currUp = 0;
+            currIdle = 0;
+            currDown = 0;
+            currLeft = 0;
+        }
+        else if (direction.equals("down")) {
+            currUp = 0;
+            currRight = 0;
+            currIdle = 0;
+            currLeft = 0;
+        }
+        else if (direction.equals("left")) {
+            currUp = 0;
+            currRight = 0;
+            currDown = 0;
+            currIdle = 0;
+        }
+        else { // idle image set case
+            currUp = 0;
+            currRight = 0;
+            currDown = 0;
+            currLeft = 0;
         }
     }
 }
