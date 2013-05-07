@@ -1,0 +1,34 @@
+#BlueJ class context
+comment0.params=
+comment0.target=ImagePackage()
+comment0.text=\r\n\ Default\ constructor\ is\ empty.\r\n\ Set\ all\ values\ through\ construtor\ methods\ below.\r\n
+comment1.params=basename\ suffix\ noOfImages
+comment1.target=void\ SetupIdleImages(java.lang.String,\ java.lang.String,\ int)
+comment1.text=\r\n\ Set\ _\ image\ array.\ This\ assumes\ that\ you\ have\ provided\ image\r\n\ file\ (in\ the\ 'images'\ folder)\ named\ 'basenameN.suffix',\ where\ N\ is\r\n\ [0..numberOfImages-1].\r\n\ \r\n\ @param\ basename\ \ The\ base\ name\ of\ the\ image\ files.\r\n\ @param\ suffix\ \ The\ suffix\ of\ the\ image\ files\ (must\ include\ the\ ".").\r\n\ @param\ noOfImages\ \ The\ number\ of\ images\ to\ be\ use\ din\ the\ animation.\r\n
+comment10.params=
+comment10.target=greenfoot.GreenfootImage\ getRightAttack()
+comment11.params=
+comment11.target=greenfoot.GreenfootImage\ getDownAttack()
+comment12.params=
+comment12.target=greenfoot.GreenfootImage\ getLeftAttack()
+comment2.params=basename\ suffix\ noOfImages
+comment2.target=void\ SetupUpImages(java.lang.String,\ java.lang.String,\ int)
+comment3.params=basename\ suffix\ noOfImages
+comment3.target=void\ SetupRightImages(java.lang.String,\ java.lang.String,\ int)
+comment4.params=basename\ suffix\ noOfImages
+comment4.target=void\ SetupDownImages(java.lang.String,\ java.lang.String,\ int)
+comment5.params=basename\ suffix\ noOfImages
+comment5.target=void\ SetupLeftImages(java.lang.String,\ java.lang.String,\ int)
+comment6.params=filename\ direction
+comment6.target=void\ SetupAttackImage(java.lang.String,\ java.lang.String)
+comment6.text=\r\n\ Set\ _\ attack\ image.\ This\ assumes\ that\ you\ have\ provided\ image\r\n\ file\ (in\ the\ 'images'\ folder)\ named\ 'filename'.\r\n\ \r\n\ @param\ filename\ \ The\ name\ of\ the\ image\ file.\r\n\ @param\ direction\ The\ direction\ the\ attack\ image\ is\ for.\r\n
+comment7.params=direction
+comment7.target=greenfoot.GreenfootImage\ getImage(java.lang.String)
+comment7.text=\r\n\ Getter\ method\ to\ receive\ the\ next\ correct\ image\ actor\ should\ set.\r\n\ \r\n\ @param\ direction\ "up"\ "right"\ "down"\ "left"\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ return\ an\ idle\ set\ image.\r\n
+comment8.params=direction
+comment8.target=void\ resetCounters(java.lang.String)
+comment8.text=\r\n\ Resets\ array\ indexes\ and\ timers\ for\ animation\ purposes.\r\n\ Direction\ should\ be\ the\ direction\ being\ currently\ animated.\r\n\ \r\n\ @param\ direction\ "up"\ "right"\ "down"\ "left"\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ reset\ as\ idle.\r\n
+comment9.params=
+comment9.target=greenfoot.GreenfootImage\ getUpAttack()
+comment9.text=\r\n\ Basic\ getter\ method\ for\ attack\ iamges.\r\n
+numComments=13
