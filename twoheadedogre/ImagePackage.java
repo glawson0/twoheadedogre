@@ -10,15 +10,10 @@ public class ImagePackage
 {    
     /* Image packs for all movement images. */
     private GreenfootImage[] idleImages;
-    private int currIdle;
     private GreenfootImage[] upImages;
-    private int currUp;
     private GreenfootImage[] rightImages;
-    private int currRight;
     private GreenfootImage[] downImages;
-    private int currDown;
     private GreenfootImage[] leftImages;
-    private int currLeft;
     
     /* Single images for attack animations. */
     private GreenfootImage upAttack;
@@ -26,25 +21,11 @@ public class ImagePackage
     private GreenfootImage downAttack;
     private GreenfootImage leftAttack;
     
-    /* Integer flags for timing animations. */
-    int isIdle;
-    int isMovingUp;
-    int isMovingRight;
-    int isMovingDown;
-    int isMovingLeft;
-    
     /**
      * Default constructor is empty.
      * Set all values through construtor methods below.
      */
-    public ImagePackage()
-    {
-       isIdle = 1;
-       isMovingUp = 0;
-       isMovingRight = 0;
-       isMovingDown = 0;
-       isMovingLeft = 0;
-    }
+    public ImagePackage() { }
     
     /**
      * Set _ image array. This assumes that you have provided image
@@ -60,32 +41,28 @@ public class ImagePackage
         idleImages = new GreenfootImage[noOfImages];
         for(int i=0; i < noOfImages; i++) {
             idleImages[i] = new GreenfootImage(basename + i + suffix);
-        }
-        currIdle = 0;
+        };
     }
     public void SetupUpImages(String basename, String suffix, int noOfImages)
     {
         upImages = new GreenfootImage[noOfImages];
         for(int i=0; i < noOfImages; i++) {
             upImages[i] = new GreenfootImage(basename + i + suffix);
-        }
-        currUp = 0;
+        };
     }
     public void SetupRightImages(String basename, String suffix, int noOfImages)
     {
         rightImages = new GreenfootImage[noOfImages];
         for(int i=0; i < noOfImages; i++) {
             rightImages[i] = new GreenfootImage(basename + i + suffix);
-        }
-        currRight = 0;
+        };
     }
     public void SetupDownImages(String basename, String suffix, int noOfImages)
     {
         downImages = new GreenfootImage[noOfImages];
         for(int i=0; i < noOfImages; i++) {
             downImages[i] = new GreenfootImage(basename + i + suffix);
-        }
-        currDown = 0;
+        };
     }
     public void SetupLeftImages(String basename, String suffix, int noOfImages)
     {
@@ -93,7 +70,6 @@ public class ImagePackage
         for(int i=0; i < noOfImages; i++) {
             leftImages[i] = new GreenfootImage(basename + i + suffix);
         }
-        currLeft = 0;
     }
     
     /**
@@ -124,73 +100,39 @@ public class ImagePackage
      * 
      * @param direction "up" "right" "down" "left"
      *                  => any other string will return an idle set image.
+     * @param index     The index specifying what image to grab.
      */
-    public GreenfootImage getImage(String direction) {
-        if (direction.equals("up")) {
-            resetIndexes("up");
-            currUp = (currUp + 1) % upImages.length;
-            return (upImages[currUp]);
-        }
-        else if (direction.equals("right")) {
-            resetIndexes("right");
-            currRight = (currRight + 1) % rightImages.length;
-            return (rightImages[currRight]);
-        }
-        else if (direction.equals("down")) {
-            resetIndexes("down");
-            currDown = (currDown + 1) % downImages.length;
-            return (downImages[currDown]);
-        }
-        else if (direction.equals("left")) {
-            resetIndexes("left");
-            currLeft = (currLeft + 1) % leftImages.length;
-            return (leftImages[currLeft]);
-        }
-        else {
-            resetIndexes("idle");
-            currIdle = (currIdle + 1) % idleImages.length;
-            return (idleImages[currIdle]);
-        }
+    public GreenfootImage getImage(String direction, int index) {
+        if (direction.equals("up")) 
+            return (upImages[index]);
+        else if (direction.equals("right"))
+            return (rightImages[index]);
+        else if (direction.equals("down"))
+            return (downImages[index]);
+        else if (direction.equals("left"))
+            return (leftImages[index]);
+        else
+            return (idleImages[index]);
     }
     
     /**
-     * Resets array indexes and timers for animation purposes.
-     * Direction should be the direction being currently animated.
+     * Getter method to receive the length of the image array
+     * associated with the specified direction.
      * 
      * @param direction "up" "right" "down" "left"
-     *                  => any other string will reset as idle.
+     *                  => any other string will return the idle set length.
      */
-    public void resetIndexes(String direction) {
-        if (direction.equals("up")) {
-            currIdle = 0;
-            currRight = 0;
-            currDown = 0;
-            currLeft = 0;
-        }
-        else if (direction.equals("right")) {
-            currUp = 0;
-            currIdle = 0;
-            currDown = 0;
-            currLeft = 0;
-        }
-        else if (direction.equals("down")) {
-            currUp = 0;
-            currRight = 0;
-            currIdle = 0;
-            currLeft = 0;
-        }
-        else if (direction.equals("left")) {
-            currUp = 0;
-            currRight = 0;
-            currDown = 0;
-            currIdle = 0;
-        }
-        else { // idle image set case
-            currUp = 0;
-            currRight = 0;
-            currDown = 0;
-            currLeft = 0;
-        }
+    public int imgArrayLen(String direction) {
+        if (direction.equals("up")) 
+            return upImages.length;
+        else if (direction.equals("right"))
+            return rightImages.length;
+        else if (direction.equals("down"))
+            return downImages.length;
+        else if (direction.equals("left"))
+            return leftImages.length;
+        else
+            return idleImages.length;
     }
     
     /**
