@@ -15,13 +15,15 @@ public class GrassWorld extends World
      */
     public Ogre ogre;
     public Face face;
+    public Intro intro;
     public GrassWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(700, 600, 1);
         face = new Face(true);
         ogre = new Ogre(new ImagePackage(), face);
-        populate();
+        intro = new Intro();
+        addObject(intro, 350, 300);
     }
     
     public void populate() {
