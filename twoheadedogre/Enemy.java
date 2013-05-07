@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-/*test*/
 
 /**
  * Write a description of class Enemy here.
