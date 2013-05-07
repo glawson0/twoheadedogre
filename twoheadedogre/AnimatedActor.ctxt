@@ -7,4 +7,7 @@ comment1.target=void\ act()
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ AnimatedActor\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment2.params=
 comment2.target=void\ setImage()
-numComments=3
+comment3.params=direction
+comment3.target=void\ resetTimers(java.lang.String)
+comment3.text=\r\n\ Resets\ array\ indexes\ and\ timers\ for\ animation\ purposes.\r\n\ Direction\ should\ be\ the\ direction\ being\ currently\ animated.\r\n\ \r\n\ @param\ direction\ "up"\ "right"\ "down"\ "left"\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ reset\ as\ idle.\r\n
+numComments=4

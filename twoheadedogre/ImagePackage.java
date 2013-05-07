@@ -10,15 +10,15 @@ public class ImagePackage
 {    
     /* Image packs for all movement images. */
     private GreenfootImage[] idleImages;
-    private int currIdle, idleTimer;
+    private int currIdle;
     private GreenfootImage[] upImages;
-    private int currUp, upTimer;
+    private int currUp;
     private GreenfootImage[] rightImages;
-    private int currRight, rightTimer;
+    private int currRight;
     private GreenfootImage[] downImages;
-    private int currDown, downTimer;
+    private int currDown;
     private GreenfootImage[] leftImages;
-    private int currLeft, leftTimer;
+    private int currLeft;
     
     /* Single images for attack animations. */
     private GreenfootImage upAttack;
@@ -62,7 +62,6 @@ public class ImagePackage
             idleImages[i] = new GreenfootImage(basename + i + suffix);
         }
         currIdle = 0;
-        idleTimer = 0;
     }
     public void SetupUpImages(String basename, String suffix, int noOfImages)
     {
@@ -71,7 +70,6 @@ public class ImagePackage
             upImages[i] = new GreenfootImage(basename + i + suffix);
         }
         currUp = 0;
-        upTimer = 0;
     }
     public void SetupRightImages(String basename, String suffix, int noOfImages)
     {
@@ -80,7 +78,6 @@ public class ImagePackage
             rightImages[i] = new GreenfootImage(basename + i + suffix);
         }
         currRight = 0;
-        rightTimer = 0;
     }
     public void SetupDownImages(String basename, String suffix, int noOfImages)
     {
@@ -89,7 +86,6 @@ public class ImagePackage
             downImages[i] = new GreenfootImage(basename + i + suffix);
         }
         currDown = 0;
-        downTimer = 0;
     }
     public void SetupLeftImages(String basename, String suffix, int noOfImages)
     {
@@ -98,7 +94,6 @@ public class ImagePackage
             leftImages[i] = new GreenfootImage(basename + i + suffix);
         }
         currLeft = 0;
-        leftTimer = 0;
     }
     
     /**
@@ -132,38 +127,28 @@ public class ImagePackage
      */
     public GreenfootImage getImage(String direction) {
         if (direction.equals("up")) {
-            resetCounters("up");
-            upTimer = (upTimer + 1) % 60;
-            if (upTimer == 0)
-               currUp = (currUp + 1) % upImages.length;
+            resetIndexes("up");
+            currUp = (currUp + 1) % upImages.length;
             return (upImages[currUp]);
         }
         else if (direction.equals("right")) {
-            resetCounters("right");
-            rightTimer = (rightTimer + 1) % 60;
-            if (rightTimer == 0)
-               currRight = (currRight + 1) % rightImages.length;
+            resetIndexes("right");
+            currRight = (currRight + 1) % rightImages.length;
             return (rightImages[currRight]);
         }
         else if (direction.equals("down")) {
-            resetCounters("down");
-            downTimer = (downTimer + 1) % 60;
-            if (downTimer == 0)
-               currDown = (currDown + 1) % downImages.length;
+            resetIndexes("down");
+            currDown = (currDown + 1) % downImages.length;
             return (downImages[currDown]);
         }
         else if (direction.equals("left")) {
-            resetCounters("left");
-            leftTimer = (leftTimer + 1) % 60;
-            if (leftTimer == 0)
-               currLeft = (currLeft + 1) % leftImages.length;
+            resetIndexes("left");
+            currLeft = (currLeft + 1) % leftImages.length;
             return (leftImages[currLeft]);
         }
         else {
-            resetCounters("idle");
-            idleTimer = (idleTimer + 1) % 60;
-            if (idleTimer == 0)
-               currIdle = (currIdle + 1) % idleImages.length;
+            resetIndexes("idle");
+            currIdle = (currIdle + 1) % idleImages.length;
             return (idleImages[currIdle]);
         }
     }
@@ -175,56 +160,36 @@ public class ImagePackage
      * @param direction "up" "right" "down" "left"
      *                  => any other string will reset as idle.
      */
-    public void resetCounters(String direction) {
+    public void resetIndexes(String direction) {
         if (direction.equals("up")) {
             currIdle = 0;
             currRight = 0;
             currDown = 0;
             currLeft = 0;
-            idleTimer = 0;
-            rightTimer = 0;
-            downTimer = 0;
-            leftTimer = 0;
         }
         else if (direction.equals("right")) {
             currUp = 0;
             currIdle = 0;
             currDown = 0;
             currLeft = 0;
-            upTimer = 0;
-            idleTimer = 0;
-            downTimer = 0;
-            leftTimer = 0;
         }
         else if (direction.equals("down")) {
             currUp = 0;
             currRight = 0;
             currIdle = 0;
             currLeft = 0;
-            upTimer = 0;
-            rightTimer = 0;
-            idleTimer = 0;
-            leftTimer = 0;
         }
         else if (direction.equals("left")) {
             currUp = 0;
             currRight = 0;
             currDown = 0;
             currIdle = 0;
-            upTimer = 0;
-            rightTimer = 0;
-            downTimer = 0;
-            idleTimer = 0;
         }
         else { // idle image set case
             currUp = 0;
             currRight = 0;
             currDown = 0;
             currLeft = 0;
-            upTimer = 0;
-            rightTimer = 0;
-            downTimer = 0;
-            leftTimer = 0;
         }
     }
     

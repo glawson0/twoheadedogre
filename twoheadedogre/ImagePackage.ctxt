@@ -26,7 +26,7 @@ comment7.params=direction
 comment7.target=greenfoot.GreenfootImage\ getImage(java.lang.String)
 comment7.text=\r\n\ Getter\ method\ to\ receive\ the\ next\ correct\ image\ actor\ should\ set.\r\n\ \r\n\ @param\ direction\ "up"\ "right"\ "down"\ "left"\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ return\ an\ idle\ set\ image.\r\n
 comment8.params=direction
-comment8.target=void\ resetCounters(java.lang.String)
+comment8.target=void\ resetIndexes(java.lang.String)
 comment8.text=\r\n\ Resets\ array\ indexes\ and\ timers\ for\ animation\ purposes.\r\n\ Direction\ should\ be\ the\ direction\ being\ currently\ animated.\r\n\ \r\n\ @param\ direction\ "up"\ "right"\ "down"\ "left"\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ reset\ as\ idle.\r\n
 comment9.params=
 comment9.target=greenfoot.GreenfootImage\ getUpAttack()

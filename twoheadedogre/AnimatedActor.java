@@ -11,6 +11,11 @@ public class AnimatedActor extends Actor
     private ImagePackage imgPack;
     private boolean isAttacking;
     private int attackTimer;
+    private int idleTimer;
+    private int upTimer;
+    private int rightTimer;
+    private int downTimer;
+    private int leftTimer;
     
     /**
      * Construct an animated actor. This assumes that you have provided image
@@ -26,6 +31,11 @@ public class AnimatedActor extends Actor
         this.imgPack = imgPack;
         isAttacking = false;
         attackTimer = 0;
+        idleTimer = 0;
+        upTimer = 0;
+        rightTimer = 0;
+        downTimer = 0;
+        leftTimer = 0;
     }
     
     /**
@@ -40,19 +50,34 @@ public class AnimatedActor extends Actor
     public void setImage() {
         if (!isAttacking) {
             if (Greenfoot.isKeyDown("up")) {
-               setImage(imgPack.getImage("up"));
+                resetTimers("up");
+                upTimer = (upTimer + 1) % 60;
+                if (upTimer == 0)
+                    setImage(imgPack.getImage("up"));
             }
             else if (Greenfoot.isKeyDown("right")) {
-               setImage(imgPack.getImage("right"));
+                resetTimers("right");
+                rightTimer = (rightTimer + 1) % 60;
+                if (rightTimer == 0)
+                    setImage(imgPack.getImage("right"));
             }
             else if (Greenfoot.isKeyDown("down")) {
-               setImage(imgPack.getImage("down"));
+                resetTimers("down");
+                downTimer = (downTimer + 1) % 60;
+                if (downTimer == 0)
+                    setImage(imgPack.getImage("down"));
             }
             else if (Greenfoot.isKeyDown("left")) {
-               setImage(imgPack.getImage("left"));
+                resetTimers("left");
+                leftTimer = (leftTimer + 1) % 60;
+                if (leftTimer == 0)
+                    setImage(imgPack.getImage("left"));
             }
             else {
-               setImage(imgPack.getImage("idle"));
+                resetTimers("idle");
+                idleTimer = (idleTimer + 1) % 60;
+                if (idleTimer == 0)
+                    setImage(imgPack.getImage("idle"));
             }
         }
         else {
@@ -76,6 +101,46 @@ public class AnimatedActor extends Actor
             else if (Greenfoot.isKeyDown("left")) {
                setImage(imgPack.getLeftAttack());
             }
+        }
+    }
+    
+        /**
+     * Resets array indexes and timers for animation purposes.
+     * Direction should be the direction being currently animated.
+     * 
+     * @param direction "up" "right" "down" "left"
+     *                  => any other string will reset as idle.
+     */
+    public void resetTimers(String direction) {
+        if (direction.equals("up")) {
+            idleTimer = 0;
+            rightTimer = 0;
+            downTimer = 0;
+            leftTimer = 0;
+        }
+        else if (direction.equals("right")) {
+            upTimer = 0;
+            idleTimer = 0;
+            downTimer = 0;
+            leftTimer = 0;
+        }
+        else if (direction.equals("down")) {
+            upTimer = 0;
+            rightTimer = 0;
+            idleTimer = 0;
+            leftTimer = 0;
+        }
+        else if (direction.equals("left")) {
+            upTimer = 0;
+            rightTimer = 0;
+            downTimer = 0;
+            idleTimer = 0;
+        }
+        else { // idle image set case
+            upTimer = 0;
+            rightTimer = 0;
+            downTimer = 0;
+            leftTimer = 0;
         }
     }
 }
