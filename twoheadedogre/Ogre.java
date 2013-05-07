@@ -6,8 +6,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Ogre extends Actor
+public class Ogre extends AnimatedActor
 {
+    public Ogre(ImagePackage imgPack) {
+        super(imgPack);
+    }
+    
     /**
      * Act - do whatever the Ogre wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

@@ -13,8 +13,8 @@ public class Knight extends Enemy
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private Ogre ogre;
-    public Knight(){
-        super();
+    public Knight(ImagePackage imgPack){
+        super(imgPack);
         ogre=(Ogre) (getWorld().getObjects(Ogre.class)).get(0);
     }
     public void act() 

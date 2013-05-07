@@ -133,35 +133,35 @@ public class ImagePackage
     public GreenfootImage getImage(String direction) {
         if (direction.equals("up")) {
             resetCounters("up");
-            upTimer = (upTimer + 1) % 20;
+            upTimer = (upTimer + 1) % 60;
             if (upTimer == 0)
                currUp = (currUp + 1) % upImages.length;
             return (upImages[currUp]);
         }
         else if (direction.equals("right")) {
             resetCounters("right");
-            rightTimer = (rightTimer + 1) % 20;
+            rightTimer = (rightTimer + 1) % 60;
             if (rightTimer == 0)
                currRight = (currRight + 1) % rightImages.length;
             return (rightImages[currRight]);
         }
         else if (direction.equals("down")) {
             resetCounters("down");
-            downTimer = (downTimer + 1) % 20;
+            downTimer = (downTimer + 1) % 60;
             if (downTimer == 0)
                currDown = (currDown + 1) % downImages.length;
             return (downImages[currDown]);
         }
         else if (direction.equals("left")) {
             resetCounters("left");
-            leftTimer = (leftTimer + 1) % 20;
+            leftTimer = (leftTimer + 1) % 60;
             if (leftTimer == 0)
                currLeft = (currLeft + 1) % leftImages.length;
             return (leftImages[currLeft]);
         }
         else {
             resetCounters("idle");
-            idleTimer = (idleTimer + 1) % 20;
+            idleTimer = (idleTimer + 1) % 60;
             if (idleTimer == 0)
                currIdle = (currIdle + 1) % idleImages.length;
             return (idleImages[currIdle]);

@@ -56,7 +56,7 @@ public class AnimatedActor extends Actor
             }
         }
         else {
-            attackTimer = (attackTimer + 1) % 20;
+            attackTimer = (attackTimer + 1) % 60;
             
             if (attackTimer == 0) {
                 isAttacking = false;
