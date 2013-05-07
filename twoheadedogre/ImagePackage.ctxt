@@ -22,12 +22,12 @@ comment5.target=void\ SetupLeftImages(java.lang.String,\ java.lang.String,\ int)
 comment6.params=filename\ direction
 comment6.target=void\ SetupAttackImage(java.lang.String,\ java.lang.String)
 comment6.text=\n\ Set\ _\ attack\ image.\ This\ assumes\ that\ you\ have\ provided\ image\n\ file\ (in\ the\ 'images'\ folder)\ named\ 'filename'.\n\ \n\ @param\ filename\ \ The\ name\ of\ the\ image\ file.\n\ @param\ direction\ The\ direction\ the\ attack\ image\ is\ for.\n
-comment7.params=direction
-comment7.target=greenfoot.GreenfootImage\ getImage(java.lang.String)
-comment7.text=\n\ Getter\ method\ to\ receive\ the\ next\ correct\ image\ actor\ should\ set.\n\ \n\ @param\ direction\ "up"\ "right"\ "down"\ "left"\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ return\ an\ idle\ set\ image.\n
+comment7.params=direction\ index
+comment7.target=greenfoot.GreenfootImage\ getImage(java.lang.String,\ int)
+comment7.text=\n\ Getter\ method\ to\ receive\ the\ next\ correct\ image\ actor\ should\ set.\n\ \n\ @param\ direction\ "up"\ "right"\ "down"\ "left"\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ return\ an\ idle\ set\ image.\n\ @param\ index\ \ \ \ \ The\ index\ specifying\ what\ image\ to\ grab.\n
 comment8.params=direction
-comment8.target=void\ resetIndexes(java.lang.String)
-comment8.text=\n\ Resets\ array\ indexes\ and\ timers\ for\ animation\ purposes.\n\ Direction\ should\ be\ the\ direction\ being\ currently\ animated.\n\ \n\ @param\ direction\ "up"\ "right"\ "down"\ "left"\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ reset\ as\ idle.\n
+comment8.target=int\ imgArrayLen(java.lang.String)
+comment8.text=\n\ Getter\ method\ to\ receive\ the\ length\ of\ the\ image\ array\n\ associated\ with\ the\ specified\ direction.\n\ \n\ @param\ direction\ "up"\ "right"\ "down"\ "left"\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ return\ the\ idle\ set\ length.\n
 comment9.params=
 comment9.target=greenfoot.GreenfootImage\ getUpAttack()
 comment9.text=\n\ Basic\ getter\ method\ for\ attack\ iamges.\n
