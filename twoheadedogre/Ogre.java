@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Ogre extends AnimatedActor
+public class Ogre extends SoundActor
 {
    
     
@@ -21,6 +21,7 @@ public class Ogre extends AnimatedActor
     private static final int SOUTH = 3;
     private int switchWait =0;
     private Face face;
+    
      public Ogre(ImagePackage imgPack, Face face) {
         super(imgPack);
         this.face=face;
@@ -30,7 +31,7 @@ public class Ogre extends AnimatedActor
     {
         if(switchWait<1){
             switchHead();
-            switchWait=6;
+            switchWait=3;
         }else{
             switchWait--;
         }

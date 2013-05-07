@@ -1,13 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-
 /**
  * Write a description of class Enemy here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemy extends AnimatedActor
+public class Enemy extends SoundActor
 {
     public Enemy(ImagePackage imgPack) {
        super(imgPack);
@@ -26,6 +25,20 @@ public class Enemy extends AnimatedActor
         for(Actor obj: objs){
             if (obj instanceof Ogre){
                 getWorld().removeObject(this);
+            }else{
+                int x=0;
+                int y=0;
+                if( getX()< obj.getX()){
+                    x-=5;
+                }else if( getX()> obj.getX()){
+                    x+=5;
+                }
+                if( getY()< obj.getY()){
+                    y-=5;
+                }else if( getY()> obj.getY()){
+                    y+=5;
+                }
+                setLocation(getX()+x, getY()+y);
             }
         }
     }
