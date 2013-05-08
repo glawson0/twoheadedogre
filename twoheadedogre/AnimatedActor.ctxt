@@ -1,16 +1,1 @@
-#BlueJ class context
-comment0.params=imgPack
-comment0.target=AnimatedActor(ImagePackage)
-comment0.text=\n\ Construct\ an\ animated\ actor.\n\ \n\ @param\ imgPack\ The\ ImagePackage\ to\ be\ associated\ with\ the\ actor.\n
-comment1.params=
-comment1.target=void\ act()
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ AnimatedActor\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-comment2.params=
-comment2.target=void\ setImage()
-comment3.params=direction
-comment3.target=void\ resetTimers(java.lang.String)
-comment3.text=\n\ Resets\ array\ indexes\ and\ timers\ for\ animation\ purposes.\n\ Direction\ should\ be\ the\ direction\ being\ currently\ animated.\n\ \n\ @param\ direction\ "up"\ "right"\ "down"\ "left"\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ reset\ as\ idle.\n
-comment4.params=direction
-comment4.target=void\ resetIndexes(java.lang.String)
-comment4.text=\n\ Resets\ array\ indexes\ and\ timers\ for\ animation\ purposes.\n\ Direction\ should\ be\ the\ direction\ being\ currently\ animated.\n\ \n\ @param\ direction\ "up"\ "right"\ "down"\ "left"\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ reset\ as\ idle.\n
-numComments=5
+

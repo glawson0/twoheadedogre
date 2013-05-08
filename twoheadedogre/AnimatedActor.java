@@ -40,6 +40,7 @@ public class AnimatedActor extends Actor
      */
     public AnimatedActor(ImagePackage imgPack)
     {
+        super();
         this.imgPack = imgPack;
         isAttacking = false;
         attackTimer = 0;

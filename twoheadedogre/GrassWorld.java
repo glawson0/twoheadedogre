@@ -10,13 +10,14 @@ import java.util.Random;
  */
 public class GrassWorld extends World
 {
-
+    public Ogre ogre;
+    public Face face;
+    public Intro intro;
+    public boolean hasStarted;
     /**
      * Constructor for objects of class GrassWorld.
      * 
      */
-    public Ogre ogre;
-    public Face face;
     private Random r;
     private LinkedList<Enemy> baddies;
     public GrassWorld()
@@ -26,12 +27,16 @@ public class GrassWorld extends World
         r=new Random();
         face = new Face(true);
         ogre = new Ogre(new ImagePackage(), face);
-        populate();
+	hasStarted = false;
+        intro = new Intro();
+        addObject(intro, 350, 300);
     }
     
-    public void populate() {
+    public void introPopulate() {
         addObject(face,50,50);
         addObject(ogre, 350, 300);
+    }
+    public void populate(){
         baddies= makeEnemies(5);
         
         for(Enemy E: baddies){
@@ -49,5 +54,10 @@ public class GrassWorld extends World
             enemies.add(new Knight(new ImagePackage(), ogre));
         }
         return enemies
+    }
+
+    public void act() {
+	if (hasStarted)
+            populate();
     }
 }

@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Enemy extends AnimatedActor
+public class Enemy extends SoundActor
 {
     public Enemy(ImagePackage imgPack) {
        super(imgPack);
