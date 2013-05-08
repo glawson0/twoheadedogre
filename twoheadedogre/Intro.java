@@ -29,6 +29,7 @@ public class Intro extends Actor
         )
         {
             ((GrassWorld)getWorld()).hasStarted = true;
+	    ((GrassWorld)getWorld()).introPopulate();
             getWorld().removeObject(this);
         }
     }    
