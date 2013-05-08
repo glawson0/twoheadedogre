@@ -1,10 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.LinkedList;
 import java.util.Random;
-<<<<<<< HEAD
-=======
 
->>>>>>> ea571ce2a9bf18011ca36b186cb87bf89d89298e
 /**
  * Write a description of class GrassWorld here.
  * 
