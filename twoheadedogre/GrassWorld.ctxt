@@ -10,4 +10,3 @@ comment3.target=java.util.LinkedList\ makeEnemies(int)
 comment4.params=
 comment4.target=void\ act()
 numComments=5
-
