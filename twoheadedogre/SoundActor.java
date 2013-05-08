@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SoundActor extends AnimatedActor
 {
-    private static final int framesBetweenSound = 60;
+    private static final int framesBetweenSound = 10;
     private boolean soundPlayed;
     private int soundTimer;
     
@@ -34,7 +34,7 @@ public class SoundActor extends AnimatedActor
         
         if (Greenfoot.isKeyDown("a")) {
             if (soundTimer == 0) {
-                playAttackSound();
+                //playAttackSound();
                 soundPlayed = true;
             }
         }

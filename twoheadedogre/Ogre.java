@@ -14,8 +14,9 @@ public class Ogre extends SoundActor
      * Act - do whatever the Ogre wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    private boolean walking= true;
+    private boolean gordo= true;
     private int switchWait =0;
+    private int attackCooldown;
     private Face face;
     
     ImagePackage imgPack;
@@ -24,6 +25,7 @@ public class Ogre extends SoundActor
         super(imgPack);
         this.face=face;
         this.imgPack = imgPack;
+        attackCooldown = 0;
     }
     
     public void act() 
@@ -65,7 +67,7 @@ public class Ogre extends SoundActor
             return;
         }
         
-        if(walking){
+        if(gordo){
             int dir;
             if((x2*x2) <(y2*y2)){
                 if(x2>0){
@@ -102,8 +104,8 @@ public class Ogre extends SoundActor
     }
     private void switchHead(){
         if (Greenfoot.isKeyDown("s")){
-            walking= !walking;
-            face.face=walking;
+            gordo= !gordo;
+            face.face=gordo;
             face.change();
         }
     }
@@ -111,13 +113,17 @@ public class Ogre extends SoundActor
         int x =0;
         int y=0;
         int dir=-1;
-        if(Greenfoot.isKeyDown("a") && !walking){
+        
+        if (attackCooldown != 0)
+            attackCooldown = (attackCooldown + 1) % 10;
+        
+        if(Greenfoot.isKeyDown("a") && attackCooldown == 0 && !gordo){
             isAttacking=true;
-            
+            attackCooldown++;
         }
         if(Greenfoot.isKeyDown("left")){
             currDirection=WEST;
-            if (walking){
+            if (gordo){
                 x-=5;
             }else{
                 dir=WEST;
@@ -125,7 +131,7 @@ public class Ogre extends SoundActor
         }
         if(Greenfoot.isKeyDown("right")){
             currDirection=EAST;
-            if (walking){
+            if (gordo){
                 x+=5;
             }else{
                 dir=EAST;
@@ -133,7 +139,7 @@ public class Ogre extends SoundActor
         }
         if(Greenfoot.isKeyDown("up")){
             currDirection=NORTH;
-            if (walking){
+            if (gordo){
                 y-=5;
             }else{
                 dir=NORTH;
@@ -141,7 +147,7 @@ public class Ogre extends SoundActor
         }
         if(Greenfoot.isKeyDown("down")){
             currDirection=SOUTH;
-            if (walking){
+            if (gordo){
                 y+=5;
             }else{
                 dir=SOUTH;

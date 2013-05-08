@@ -30,11 +30,11 @@ public class Face extends Actor
    public void change(){
         if (face){
             //Use Dimond
-            setImage("karo.png");
+            setImage("Gordo.png");
         }
         else{
             //Use Club
-            setImage("kreuz.png");
+            setImage("Omak.png");
         }
     }
 }
