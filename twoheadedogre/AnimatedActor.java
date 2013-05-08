@@ -10,6 +10,12 @@ public class AnimatedActor extends Actor
 {
     private ImagePackage imgPack;
     
+    private static final int EAST = 0;
+    private static final int WEST = 1;
+    private static final int NORTH = 2;
+    private static final int SOUTH = 3;
+    private int currDirection;
+    
     /* Boolean to be set when actor is attacking. */
     protected boolean isAttacking;
     
@@ -25,13 +31,6 @@ public class AnimatedActor extends Actor
     private int downTimer;
     private int currLeft;
     private int leftTimer;
-    
-    /* Integer flags for timing animations. */
-    int isIdle;
-    int isMovingUp;
-    int isMovingRight;
-    int isMovingDown;
-    int isMovingLeft;
     
     /**
      * Construct an animated actor.
@@ -62,12 +61,13 @@ public class AnimatedActor extends Actor
      */
     public void act() 
     {
-        setImage();
+       setImage();
     }
+    
     
     public void setImage() {
         if (!isAttacking) {
-            if (Greenfoot.isKeyDown("up")) {
+            if (currDirection == NORTH) {
                 resetTimers("up");
                 resetIndexes("up");
                 
@@ -77,7 +77,7 @@ public class AnimatedActor extends Actor
                 }
                 upTimer = (upTimer + 1) % 60;
             }
-            else if (Greenfoot.isKeyDown("right")) {
+            else if (currDirection == EAST) {
                 resetTimers("right");
                 resetIndexes("right");
                 
@@ -87,7 +87,7 @@ public class AnimatedActor extends Actor
                 }
                 rightTimer = (rightTimer + 1) % 60;
             }
-            else if (Greenfoot.isKeyDown("down")) {
+            else if (currDirection == SOUTH) {
                 resetTimers("down");
                 resetIndexes("down");
                 
@@ -97,7 +97,7 @@ public class AnimatedActor extends Actor
                 }
                 downTimer = (downTimer + 1) % 60;
             }
-            else if (Greenfoot.isKeyDown("left")) {
+            else if (currDirection == WEST) {
                 resetTimers("left");
                 resetIndexes("left");
                 
@@ -129,16 +129,16 @@ public class AnimatedActor extends Actor
                 return;
             }
             
-            if (Greenfoot.isKeyDown("up")) {
+            if (currDirection == NORTH) {
                setImage(imgPack.getUpAttack());
             }
-            else if (Greenfoot.isKeyDown("right")) {
+            else if (currDirection == EAST) {
                setImage(imgPack.getRightAttack());
             }
-            else if (Greenfoot.isKeyDown("down")) {
+            else if (currDirection == SOUTH) {
                setImage(imgPack.getDownAttack());
             }
-            else if (Greenfoot.isKeyDown("left")) {
+            else if (currDirection == WEST) {
                setImage(imgPack.getLeftAttack());
             }
         }
@@ -146,31 +146,31 @@ public class AnimatedActor extends Actor
     
         /**
      * Resets array indexes and timers for animation purposes.
-     * Direction should be the direction being currently animated.
+     * currDirection should be the currDirection being currently animated.
      * 
-     * @param direction "up" "right" "down" "left"
+     * @param currDirection "up" "right" "down" "left"
      *                  => any other string will reset as idle.
      */
-    public void resetTimers(String direction) {
-        if (direction.equals("up")) {
+    public void resetTimers(String currDirection) {
+        if (currDirection.equals("up")) {
             idleTimer = 0;
             rightTimer = 0;
             downTimer = 0;
             leftTimer = 0;
         }
-        else if (direction.equals("right")) {
+        else if (currDirection.equals("right")) {
             upTimer = 0;
             idleTimer = 0;
             downTimer = 0;
             leftTimer = 0;
         }
-        else if (direction.equals("down")) {
+        else if (currDirection.equals("down")) {
             upTimer = 0;
             rightTimer = 0;
             idleTimer = 0;
             leftTimer = 0;
         }
-        else if (direction.equals("left")) {
+        else if (currDirection.equals("left")) {
             upTimer = 0;
             rightTimer = 0;
             downTimer = 0;
@@ -186,31 +186,31 @@ public class AnimatedActor extends Actor
     
     /**
      * Resets array indexes and timers for animation purposes.
-     * Direction should be the direction being currently animated.
+     * currDirection should be the currDirection being currently animated.
      * 
-     * @param direction "up" "right" "down" "left"
+     * @param currDirection "up" "right" "down" "left"
      *                  => any other string will reset as idle.
      */
-    public void resetIndexes(String direction) {
-        if (direction.equals("up")) {
+    public void resetIndexes(String currDirection) {
+        if (currDirection.equals("up")) {
             currIdle = 0;
             currRight = 0;
             currDown = 0;
             currLeft = 0;
         }
-        else if (direction.equals("right")) {
+        else if (currDirection.equals("right")) {
             currUp = 0;
             currIdle = 0;
             currDown = 0;
             currLeft = 0;
         }
-        else if (direction.equals("down")) {
+        else if (currDirection.equals("down")) {
             currUp = 0;
             currRight = 0;
             currIdle = 0;
             currLeft = 0;
         }
-        else if (direction.equals("left")) {
+        else if (currDirection.equals("left")) {
             currUp = 0;
             currRight = 0;
             currDown = 0;
