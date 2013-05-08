@@ -15,11 +15,6 @@ public class Ogre extends SoundActor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     private boolean walking= true;
-    private static final int EAST = 0;
-    private static final int WEST = 1;
-    private static final int NORTH = 2;
-    private static final int SOUTH = 3;
-    public int facing;
     private int switchWait =0;
     private Face face;
     
@@ -126,7 +121,7 @@ public class Ogre extends SoundActor
             if (walking){
                 x-=5;
             }else{
-                facing=WEST;
+                currDirection=WEST;
                 dir=WEST;
             }
         }
@@ -134,7 +129,7 @@ public class Ogre extends SoundActor
             if (walking){
                 x+=5;
             }else{
-                facing=EAST;
+                currDirection=EAST;
                 dir=EAST;
             }
         }
@@ -142,7 +137,7 @@ public class Ogre extends SoundActor
             if (walking){
                 y-=5;
             }else{
-                facing=NORTH;
+                currDirection=NORTH;
                 dir=NORTH;
             }
         }
@@ -150,7 +145,7 @@ public class Ogre extends SoundActor
             if (walking){
                 y+=5;
             }else{
-                facing=SOUTH;
+                currDirection=SOUTH;
                 dir=SOUTH;
             }
         }

@@ -34,13 +34,17 @@ public class Archer extends Enemy
         int ym=0;
         if(y<0 &&(y2>(200*200))){
             ym-=1;
+            currDirection=NORTH;
         } else if (y2>(200*200)){
             ym+=1;
+            currDirection=SOUTH;
         }
         if(x<0 &&(x2>(200*200))){
             xm-=1;
+            currDirection=WEST;
         } else if ((x2>(200*200))){
             xm+=1;
+            currDirection=EAST;
         }
         if(x2>y2){
             ym*=2;

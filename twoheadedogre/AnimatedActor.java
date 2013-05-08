@@ -10,11 +10,11 @@ public class AnimatedActor extends Actor
 {
     private ImagePackage imgPack;
     
-    private static final int EAST = 0;
-    private static final int WEST = 1;
-    private static final int NORTH = 2;
-    private static final int SOUTH = 3;
-    private int currDirection;
+    protected static final int EAST = 0;
+    protected static final int WEST = 1;
+    protected static final int NORTH = 2;
+    protected static final int SOUTH = 3;
+    protected int currDirection;
     
     /* Boolean to be set when actor is attacking. */
     protected boolean isAttacking;

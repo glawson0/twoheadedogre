@@ -27,13 +27,17 @@ public class Knight extends Enemy
         int y=0;
         if (ogre.getX()< getX() ){
             x-=2;
+            currDirection=WEST;
         }else if (ogre.getX()> getX() ){
             x+=2;
+            currDirection=EAST;
         }
         if (ogre.getY()< getY() ){
             y-=2;
+            currDirection=NORTH;
         }else if (ogre.getY()> getY() ){
             y+=2;
+            currDirection=SOUTH;
         }
         setLocation(getX()+x,getY()+y);
     }
