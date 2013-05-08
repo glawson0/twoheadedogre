@@ -28,7 +28,7 @@ public class Intro extends Actor
             Greenfoot.mouseClicked(this)
         )
         {
-            ((GrassWorld)getWorld()).populate();
+            ((GrassWorld)getWorld()).hasStarted = true;
             getWorld().removeObject(this);
         }
     }    

@@ -9,20 +9,21 @@ import java.util.LinkedList;
  */
 public class GrassWorld extends World
 {
-
+    public Ogre ogre;
+    public Face face;
+    public Intro intro;
+    public boolean hasStarted;
     /**
      * Constructor for objects of class GrassWorld.
      * 
      */
-    public Ogre ogre;
-    public Face face;
-    public Intro intro;
     public GrassWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(700, 600, 1);
         face = new Face(true);
         ogre = new Ogre(new ImagePackage(), face);
+	hasStarted = false;
         intro = new Intro();
         addObject(intro, 350, 300);
     }
@@ -31,5 +32,10 @@ public class GrassWorld extends World
         addObject(face,50,50);
         addObject(ogre, 350, 300);
         addObject(new Knight(new ImagePackage(), ogre), 500,600);
+    }
+
+    public void act() {
+	if (hasStarted)
+            populate();
     }
 }
