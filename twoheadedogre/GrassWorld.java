@@ -23,7 +23,7 @@ public class GrassWorld extends World
         super(700, 600, 1);
         face = new Face(true);
         ogre = new Ogre(new ImagePackage(), face);
-        intro = new Intro(new ScoreBoard());
+        intro = new Intro();
 	hasStarted = false;
         addObject(intro, 350, 300);
     }
