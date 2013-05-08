@@ -19,6 +19,7 @@ public class Ogre extends SoundActor
     private static final int WEST = 1;
     private static final int NORTH = 2;
     private static final int SOUTH = 3;
+    public int facing;
     private int switchWait =0;
     private Face face;
     
@@ -48,10 +49,15 @@ public class Ogre extends SoundActor
         int x =0;
         int y=0;
         int dir=-1;
+        if(Greenfoot.isKeyDown("a") && !walking){
+            isAttacking=true;
+            
+        }
         if(Greenfoot.isKeyDown("left")){
             if (walking){
                 x-=5;
             }else{
+                facing=WEST;
                 dir=WEST;
             }
         }
@@ -59,6 +65,7 @@ public class Ogre extends SoundActor
             if (walking){
                 x+=5;
             }else{
+                facing=EAST;
                 dir=EAST;
             }
         }
@@ -66,6 +73,7 @@ public class Ogre extends SoundActor
             if (walking){
                 y-=5;
             }else{
+                facing=NORTH;
                 dir=NORTH;
             }
         }
@@ -73,6 +81,7 @@ public class Ogre extends SoundActor
             if (walking){
                 y+=5;
             }else{
+                facing=SOUTH;
                 dir=SOUTH;
             }
         }

@@ -11,7 +11,7 @@ public class AnimatedActor extends Actor
     private ImagePackage imgPack;
     
     /* Boolean to be set when actor is attacking. */
-    private boolean isAttacking;
+    protected boolean isAttacking;
     
     /* Timers and indexes for imgPack. */
     private int attackTimer;
