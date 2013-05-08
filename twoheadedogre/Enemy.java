@@ -42,6 +42,7 @@ public class Enemy extends SoundActor
                                 break;
                 }
                 if (O.isAttacking && facingOK){
+                    ((GrassWorld)getWorld()).BaddieCount--;
                     getWorld().removeObject(this);
                     return;
                 }else{

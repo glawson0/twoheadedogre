@@ -20,6 +20,7 @@ public class GrassWorld extends World
      */
     private Random r;
     private LinkedList<Enemy> baddies;
+    public int BaddieCount=0;
     public GrassWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -29,7 +30,7 @@ public class GrassWorld extends World
         ogre = new Ogre(new ImagePackage(), face);
         hasStarted = false;
         intro = new Intro();
-	hasStarted = false;
+        hasStarted = false;
         addObject(intro, 350, 300);
     }
     
@@ -39,9 +40,9 @@ public class GrassWorld extends World
         populate();
     }
     public void populate(){
-        baddies= makeEnemies(5);
+        baddies= makeEnemies(10);
         Enemy E;
-        while( baddies.size()>0){
+        while( baddies.size()>7){
             E=baddies.pop();
             switch(r.nextInt(4)){
             case 0: addObject(E,0, r.nextInt(600));
@@ -53,12 +54,14 @@ public class GrassWorld extends World
             case 3: addObject(E,r.nextInt(700),600);
                     break;
             }
+            BaddieCount++;
         }
         
     }
     
     private LinkedList<Enemy> makeEnemies(int numE){
         LinkedList<Enemy> enemies= new LinkedList<Enemy>();
+        enemies.add( new Archer(new ImagePackage(), ogre));
         for (int i=0; i< numE; i++){
             enemies.add(new Knight(new ImagePackage(), ogre));
         }
@@ -67,7 +70,21 @@ public class GrassWorld extends World
 
     public void act() {
     if (hasStarted){
-        
+        Enemy E;
+        while ((BaddieCount <2) && (baddies.size()> 0)){
+            E=baddies.pop();
+            switch(r.nextInt(4)){
+            case 0: addObject(E,0, r.nextInt(600));
+                    break;
+            case 1: addObject(E,700, r.nextInt(600));
+                    break;
+            case 2: addObject(E,r.nextInt(700),0);
+                    break;
+            case 3: addObject(E,r.nextInt(700),600);
+                    break;
+            }
+            BaddieCount++;
+        }
     };
             
     }
