@@ -8,9 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Intro extends Actor
 {
+    private ScoreBoard sb;
 
-    public Intro(){
+    public Intro(ScoreBoard sb){
         getImage().scale(500, 400);
+        this.sb = sb;
+        getWorld().addObject(this.sb, 350, 400);
     }
 
     /**
@@ -29,6 +32,7 @@ public class Intro extends Actor
         )
         {
             ((GrassWorld)getWorld()).populate();
+            getWorld().removeObject(sb);
             getWorld().removeObject(this);
         }
     }    
