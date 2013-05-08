@@ -10,6 +10,7 @@ public class AnimatedActor extends Actor
 {
     private ImagePackage imgPack;
     
+    protected static final int animTime = 20;
     protected static final int EAST = 0;
     protected static final int WEST = 1;
     protected static final int NORTH = 2;
@@ -61,85 +62,75 @@ public class AnimatedActor extends Actor
      */
     public void act() 
     {
-       setImage();
+       setMyImage();
     }
     
     
-    public void setImage() {
+    public void setMyImage() {
         if (!isAttacking) {
             if (currDirection == NORTH) {
-                resetTimers("up");
-                resetIndexes("up");
+                resetTimers(currDirection);
+                resetIndexes(currDirection);
                 
                 if (upTimer == 0) {
                     currUp = (currUp + 1) % imgPack.imgArrayLen("up");
                     setImage(imgPack.getImage("up",currUp));
                 }
-                upTimer = (upTimer + 1) % 60;
+                upTimer = (upTimer + 1) % animTime;
             }
             else if (currDirection == EAST) {
-                resetTimers("right");
-                resetIndexes("right");
+                resetTimers(currDirection);
+                resetIndexes(currDirection);
                 
                 if (rightTimer == 0) {
                     currRight = (currRight + 1) % imgPack.imgArrayLen("right");
                     setImage(imgPack.getImage("right",currRight));
                 }
-                rightTimer = (rightTimer + 1) % 60;
+                rightTimer = (rightTimer + 1) % animTime;
             }
             else if (currDirection == SOUTH) {
-                resetTimers("down");
-                resetIndexes("down");
+                resetTimers(currDirection);
+                resetIndexes(currDirection);
                 
                 if (downTimer == 0) {
                     currDown = (currDown + 1) % imgPack.imgArrayLen("down");
                     setImage(imgPack.getImage("down",currDown));
                 }
-                downTimer = (downTimer + 1) % 60;
+                downTimer = (downTimer + 1) % animTime;
             }
             else if (currDirection == WEST) {
-                resetTimers("left");
-                resetIndexes("left");
+                resetTimers(currDirection);
+                resetIndexes(currDirection);
                 
                 if (leftTimer == 0) {
                     currLeft = (currLeft + 1) % imgPack.imgArrayLen("left");
                     setImage(imgPack.getImage("left",currLeft));
                 }
-                leftTimer = (leftTimer + 1) % 60;
-            }
-            else {
-                resetTimers("idle");
-                resetIndexes("idle");
-                
-                if (idleTimer == 0) {
-                    currIdle = (currIdle + 1) % imgPack.imgArrayLen("idle");
-                    setImage(imgPack.getImage("idle",currIdle));
-                }
-                idleTimer = (idleTimer + 1) % 60;
+                leftTimer = (leftTimer + 1) % animTime;
             }
         }
         else {
-            resetTimers("idle");
-            resetIndexes("idle");
+            resetTimers(-1);
+            resetIndexes(-1);
             
-            attackTimer = (attackTimer + 1) % 60;
+            attackTimer = (attackTimer + 1) % animTime;
             if (attackTimer == 0) {
                 isAttacking = false;
-                setImage();
+                setMyImage();
                 return;
             }
             
             if (currDirection == NORTH) {
-               setImage(imgPack.getUpAttack());
+               this.setImage(imgPack.getUpAttack());
             }
             else if (currDirection == EAST) {
-               setImage(imgPack.getRightAttack());
+               this.setImage(imgPack.getRightAttack());
             }
             else if (currDirection == SOUTH) {
-               setImage(imgPack.getDownAttack());
+               this.setImage(imgPack.getDownAttack());
             }
             else if (currDirection == WEST) {
-               setImage(imgPack.getLeftAttack());
+               this.setImage(imgPack.getLeftAttack());
             }
         }
     }
@@ -148,35 +139,35 @@ public class AnimatedActor extends Actor
      * Resets array indexes and timers for animation purposes.
      * currDirection should be the currDirection being currently animated.
      * 
-     * @param currDirection "up" "right" "down" "left"
+     * @param currDirection NORTH EAST WEST SOUTH
      *                  => any other string will reset as idle.
      */
-    public void resetTimers(String currDirection) {
-        if (currDirection.equals("up")) {
+    public void resetTimers(int direction) {
+        if (direction == NORTH) {
             idleTimer = 0;
             rightTimer = 0;
             downTimer = 0;
             leftTimer = 0;
         }
-        else if (currDirection.equals("right")) {
+        else if (direction == EAST) {
             upTimer = 0;
             idleTimer = 0;
             downTimer = 0;
             leftTimer = 0;
         }
-        else if (currDirection.equals("down")) {
+        else if (direction == SOUTH) {
             upTimer = 0;
             rightTimer = 0;
             idleTimer = 0;
             leftTimer = 0;
         }
-        else if (currDirection.equals("left")) {
+        else if (direction == WEST) {
             upTimer = 0;
             rightTimer = 0;
             downTimer = 0;
             idleTimer = 0;
         }
-        else { // idle image set case
+        else {
             upTimer = 0;
             rightTimer = 0;
             downTimer = 0;
@@ -188,35 +179,35 @@ public class AnimatedActor extends Actor
      * Resets array indexes and timers for animation purposes.
      * currDirection should be the currDirection being currently animated.
      * 
-     * @param currDirection "up" "right" "down" "left"
+     * @param currDirection NORTH EAST WEST SOUTH
      *                  => any other string will reset as idle.
      */
-    public void resetIndexes(String currDirection) {
-        if (currDirection.equals("up")) {
+    public void resetIndexes(int direction) {
+        if (direction == NORTH) {
             currIdle = 0;
             currRight = 0;
             currDown = 0;
             currLeft = 0;
         }
-        else if (currDirection.equals("right")) {
+        else if (direction == EAST) {
             currUp = 0;
             currIdle = 0;
             currDown = 0;
             currLeft = 0;
         }
-        else if (currDirection.equals("down")) {
+        else if (direction == SOUTH) {
             currUp = 0;
             currRight = 0;
             currIdle = 0;
             currLeft = 0;
         }
-        else if (currDirection.equals("left")) {
+        else if (direction == WEST) {
             currUp = 0;
             currRight = 0;
             currDown = 0;
             currIdle = 0;
         }
-        else { // idle image set case
+        else {
             currUp = 0;
             currRight = 0;
             currDown = 0;

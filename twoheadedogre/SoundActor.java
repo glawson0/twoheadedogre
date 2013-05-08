@@ -24,6 +24,7 @@ public class SoundActor extends AnimatedActor
      */
     public void act() 
     {
+        super.act();
         if (soundPlayed) {
             soundTimer = (soundTimer + 1) % framesBetweenSound;
             if (soundTimer == 0) {

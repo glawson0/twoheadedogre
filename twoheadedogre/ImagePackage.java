@@ -41,28 +41,28 @@ public class ImagePackage
         idleImages = new GreenfootImage[noOfImages];
         for(int i=0; i < noOfImages; i++) {
             idleImages[i] = new GreenfootImage(basename + i + suffix);
-        };
+        }
     }
     public void SetupUpImages(String basename, String suffix, int noOfImages)
     {
         upImages = new GreenfootImage[noOfImages];
         for(int i=0; i < noOfImages; i++) {
             upImages[i] = new GreenfootImage(basename + i + suffix);
-        };
+        }
     }
     public void SetupRightImages(String basename, String suffix, int noOfImages)
     {
         rightImages = new GreenfootImage[noOfImages];
         for(int i=0; i < noOfImages; i++) {
             rightImages[i] = new GreenfootImage(basename + i + suffix);
-        };
+        }
     }
     public void SetupDownImages(String basename, String suffix, int noOfImages)
     {
         downImages = new GreenfootImage[noOfImages];
         for(int i=0; i < noOfImages; i++) {
             downImages[i] = new GreenfootImage(basename + i + suffix);
-        };
+        }
     }
     public void SetupLeftImages(String basename, String suffix, int noOfImages)
     {
@@ -112,7 +112,7 @@ public class ImagePackage
         else if (direction.equals("left"))
             return (leftImages[index]);
         else
-            return (idleImages[index]);
+            return (downImages[0]);
     }
     
     /**
@@ -120,7 +120,7 @@ public class ImagePackage
      * associated with the specified direction.
      * 
      * @param direction "up" "right" "down" "left"
-     *                  => any other string will return the idle set length.
+     *                  => any other string will return -1
      */
     public int imgArrayLen(String direction) {
         if (direction.equals("up")) 
@@ -132,7 +132,7 @@ public class ImagePackage
         else if (direction.equals("left"))
             return leftImages.length;
         else
-            return idleImages.length;
+            return -1;
     }
     
     /**

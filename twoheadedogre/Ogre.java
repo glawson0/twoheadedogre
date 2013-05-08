@@ -18,9 +18,12 @@ public class Ogre extends SoundActor
     private int switchWait =0;
     private Face face;
     
+    ImagePackage imgPack;
+    
      public Ogre(ImagePackage imgPack, Face face) {
         super(imgPack);
         this.face=face;
+        this.imgPack = imgPack;
     }
     
     public void act() 
@@ -33,6 +36,7 @@ public class Ogre extends SoundActor
         }
         procInput();
         procAI();
+        super.act();
     }
     private void procAI (){
         List<Enemy> enemies = getWorld().getObjects(Enemy.class);
@@ -65,26 +69,20 @@ public class Ogre extends SoundActor
             int dir;
             if((x2*x2) <(y2*y2)){
                 if(x2>0){
+                    currDirection=WEST;
                     dir=WEST;
                 }else{
+                    currDirection=EAST;
                     dir=EAST;
                 }
             }else{
                 if(y2>0){
+                    currDirection=NORTH;
                     dir=NORTH;
                 }else{
+                    currDirection=SOUTH;
                     dir=SOUTH;
                 }
-            }
-            switch(dir){
-            case 0: setRotation(0);
-                    break;
-            case 1: setRotation(270);
-                    break;
-            case 2: setRotation(180);
-                    break;
-            case 3: setRotation(90);
-                    break;
             }
         }else{
             int x=0;
@@ -118,48 +116,38 @@ public class Ogre extends SoundActor
             
         }
         if(Greenfoot.isKeyDown("left")){
+            currDirection=WEST;
             if (walking){
                 x-=5;
             }else{
-                currDirection=WEST;
                 dir=WEST;
             }
         }
         if(Greenfoot.isKeyDown("right")){
+            currDirection=EAST;
             if (walking){
                 x+=5;
             }else{
-                currDirection=EAST;
                 dir=EAST;
             }
         }
         if(Greenfoot.isKeyDown("up")){
+            currDirection=NORTH;
             if (walking){
                 y-=5;
             }else{
-                currDirection=NORTH;
                 dir=NORTH;
             }
         }
         if(Greenfoot.isKeyDown("down")){
+            currDirection=SOUTH;
             if (walking){
                 y+=5;
             }else{
-                currDirection=SOUTH;
                 dir=SOUTH;
             }
         }
         setLocation(getX()+x,getY()+y);
-        switch(dir){
-            case 0: setRotation(0);
-                    break;
-            case 1: setRotation(270);
-                    break;
-            case 2: setRotation(180);
-                    break;
-            case 3: setRotation(90);
-                    break;
-        }
         
     }
 }

@@ -27,7 +27,18 @@ public class GrassWorld extends World
         super(700, 600, 1);
         r=new Random();
         face = new Face(true);
-        ogre = new Ogre(new ImagePackage(), face);
+        
+        ImagePackage ogrePack = new ImagePackage();
+        ogrePack.SetupUpImages("OgreUp",".png",2);
+        ogrePack.SetupDownImages("OgreDown",".png",2);
+        ogrePack.SetupLeftImages("OgreLeft",".png",2);
+        ogrePack.SetupRightImages("OgreRight",".png",2);
+        ogrePack.SetupAttackImage("OgreUpAttack.png","up");
+        ogrePack.SetupAttackImage("OgreDownAttack.png","down");
+        ogrePack.SetupAttackImage("OgreLeftAttack.png","left");
+        ogrePack.SetupAttackImage("OgreRightAttack.png","right");
+        ogre = new Ogre(ogrePack, face);
+        
         hasStarted = false;
         intro = new Intro();
         hasStarted = false;
