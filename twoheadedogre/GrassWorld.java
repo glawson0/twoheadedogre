@@ -27,7 +27,7 @@ public class GrassWorld extends World
         r=new Random();
         face = new Face(true);
         ogre = new Ogre(new ImagePackage(), face);
-	hasStarted = false;
+        hasStarted = false;
         intro = new Intro();
         addObject(intro, 350, 300);
     }
@@ -35,14 +35,22 @@ public class GrassWorld extends World
     public void introPopulate() {
         addObject(face,50,50);
         addObject(ogre, 350, 300);
+        populate();
     }
     public void populate(){
         baddies= makeEnemies(5);
-        
-        for(Enemy E: baddies){
-            switch(r.getInt(4)){
-                case 0: addObject(E,0
-                
+        Enemy E;
+        while( baddies.size()>0){
+            E=baddies.pop();
+            switch(r.nextInt(4)){
+            case 0: addObject(E,0, r.nextInt(600));
+                    break;
+            case 1: addObject(E,700, r.nextInt(600));
+                    break;
+            case 2: addObject(E,r.nextInt(700),0);
+                    break;
+            case 3: addObject(E,r.nextInt(700),600);
+                    break;
             }
         }
         
@@ -53,11 +61,13 @@ public class GrassWorld extends World
         for (int i=0; i< numE; i++){
             enemies.add(new Knight(new ImagePackage(), ogre));
         }
-        return enemies
+        return enemies;
     }
 
     public void act() {
-	if (hasStarted)
-            populate();
+    if (hasStarted){
+        
+    };
+            
     }
 }
