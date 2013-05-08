@@ -25,7 +25,7 @@ public class Enemy extends SoundActor
         for(Actor obj: objs){
             if (obj instanceof Ogre){
                 getWorld().removeObject(this);
-            }else{
+            }else if(obj instanceof Enemy){
                 int x=0;
                 int y=0;
                 if( getX()< obj.getX()){
