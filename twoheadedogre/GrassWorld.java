@@ -29,6 +29,7 @@ public class GrassWorld extends World
         ogre = new Ogre(new ImagePackage(), face);
         hasStarted = false;
         intro = new Intro();
+	hasStarted = false;
         addObject(intro, 350, 300);
     }
     
