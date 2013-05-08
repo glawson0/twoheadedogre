@@ -6,8 +6,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Ogre extends Actor
+public class Ogre extends SoundActor
 {
+   
+    
     /**
      * Act - do whatever the Ogre wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -17,12 +19,20 @@ public class Ogre extends Actor
     private static final int WEST = 1;
     private static final int NORTH = 2;
     private static final int SOUTH = 3;
+    public int facing;
     private int switchWait =0;
+    private Face face;
+    
+     public Ogre(ImagePackage imgPack, Face face) {
+        super(imgPack);
+        this.face=face;
+    }
+    
     public void act() 
     {
         if(switchWait<1){
             switchHead();
-            switchWait=6;
+            switchWait=3;
         }else{
             switchWait--;
         }
@@ -31,16 +41,23 @@ public class Ogre extends Actor
     private void switchHead(){
         if (Greenfoot.isKeyDown("s")){
             walking= !walking;
+            face.face=walking;
+            face.change();
         }
     }
     private void procInput(){
         int x =0;
         int y=0;
         int dir=-1;
+        if(Greenfoot.isKeyDown("a") && !walking){
+            isAttacking=true;
+            
+        }
         if(Greenfoot.isKeyDown("left")){
             if (walking){
                 x-=5;
             }else{
+                facing=WEST;
                 dir=WEST;
             }
         }
@@ -48,6 +65,7 @@ public class Ogre extends Actor
             if (walking){
                 x+=5;
             }else{
+                facing=EAST;
                 dir=EAST;
             }
         }
@@ -55,6 +73,7 @@ public class Ogre extends Actor
             if (walking){
                 y-=5;
             }else{
+                facing=NORTH;
                 dir=NORTH;
             }
         }
@@ -62,6 +81,7 @@ public class Ogre extends Actor
             if (walking){
                 y+=5;
             }else{
+                facing=SOUTH;
                 dir=SOUTH;
             }
         }

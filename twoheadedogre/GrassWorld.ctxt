@@ -2,5 +2,12 @@
 comment0.params=
 comment0.target=GrassWorld()
 comment1.params=
-comment1.target=void\ populate()
-numComments=2
+comment1.target=void\ introPopulate()
+comment2.params=
+comment2.target=void\ populate()
+comment3.params=numE
+comment3.target=java.util.LinkedList\ makeEnemies(int)
+comment4.params=
+comment4.target=void\ act()
+numComments=5
+
