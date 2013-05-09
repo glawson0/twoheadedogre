@@ -19,6 +19,7 @@ public class Knight extends Enemy
     }
     public void act() 
     {
+        super.act();
         move();
         checkCollision();
     }

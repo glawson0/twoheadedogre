@@ -21,6 +21,7 @@ public class Archer extends Enemy
     }
     public void act() 
     {
+        //super.act();
         move();
         attack();
         checkCollision();

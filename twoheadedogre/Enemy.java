@@ -21,7 +21,6 @@ public class Enemy extends SoundActor
     public void act() 
     {
         super.act();
-        checkCollision();
     }
     protected void checkCollision(){
         java.util.List <Actor> objs= getIntersectingObjects(Actor.class);

@@ -14,6 +14,8 @@ public class GrassWorld extends World
     public Face face;
     public Intro intro;
     public boolean hasStarted;
+    public ImagePackage ogrePack;
+    public ImagePackage knightPack;
     /**
      * Constructor for objects of class GrassWorld.
      * 
@@ -28,7 +30,7 @@ public class GrassWorld extends World
         r=new Random();
         face = new Face(true);
         
-        ImagePackage ogrePack = new ImagePackage();
+        ogrePack = new ImagePackage();
         ogrePack.SetupUpImages("OgreUp",".png",2);
         ogrePack.SetupDownImages("OgreDown",".png",2);
         ogrePack.SetupLeftImages("OgreLeft",".png",2);
@@ -37,6 +39,17 @@ public class GrassWorld extends World
         ogrePack.SetupAttackImage("OgreDownAttack.png","down");
         ogrePack.SetupAttackImage("OgreLeftAttack.png","left");
         ogrePack.SetupAttackImage("OgreRightAttack.png","right");
+        
+        knightPack= new ImagePackage();
+        knightPack.SetupUpImages("knightup",".png",3);
+        knightPack.SetupDownImages("knightdown",".png",3);
+        knightPack.SetupLeftImages("knightleft",".png",2);
+        knightPack.SetupRightImages("knightright",".png",2);
+        knightPack.SetupAttackImage("knightup4.png","up");
+        knightPack.SetupAttackImage("knightdown4.png","down");
+        knightPack.SetupAttackImage("knightleft3.png","left");
+        knightPack.SetupAttackImage("knightright3.png","right");
+        
         ogre = new Ogre(ogrePack, face);
         
         hasStarted = false;
@@ -74,7 +87,7 @@ public class GrassWorld extends World
         LinkedList<Enemy> enemies= new LinkedList<Enemy>();
         enemies.add( new Archer(new ImagePackage(), ogre));
         for (int i=0; i< numE; i++){
-            enemies.add(new Knight(new ImagePackage(), ogre));
+            enemies.add(new Knight(knightPack, ogre));
         }
         return enemies;
     }
