@@ -121,36 +121,32 @@ public class Ogre extends SoundActor
             isAttacking=true;
             attackCooldown++;
         }
-        if(Greenfoot.isKeyDown("left")){
-            currDirection=WEST;
+        if(Greenfoot.isKeyDown("left")){;
             if (gordo){
                 x-=5;
             }else{
-                dir=WEST;
+                currDirection=WEST;
             }
         }
         if(Greenfoot.isKeyDown("right")){
-            currDirection=EAST;
             if (gordo){
                 x+=5;
             }else{
-                dir=EAST;
+                currDirection=EAST;
             }
         }
         if(Greenfoot.isKeyDown("up")){
-            currDirection=NORTH;
             if (gordo){
                 y-=5;
             }else{
-                dir=NORTH;
+                currDirection=NORTH;
             }
         }
-        if(Greenfoot.isKeyDown("down")){
-            currDirection=SOUTH;
+        if(Greenfoot.isKeyDown("down")){;
             if (gordo){
                 y+=5;
             }else{
-                dir=SOUTH;
+                currDirection=SOUTH;
             }
         }
         setLocation(getX()+x,getY()+y);
