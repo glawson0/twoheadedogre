@@ -1,16 +1,16 @@
 #BlueJ class context
 comment0.params=imgPack
 comment0.target=AnimatedActor(ImagePackage)
-comment0.text=\r\n\ Construct\ an\ animated\ actor.\r\n\ \r\n\ @param\ imgPack\ The\ ImagePackage\ to\ be\ associated\ with\ the\ actor.\r\n
+comment0.text=\n\ Construct\ an\ animated\ actor.\n\ \n\ @param\ imgPack\ The\ ImagePackage\ to\ be\ associated\ with\ the\ actor.\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ AnimatedActor\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.text=\n\ Act\ -\ do\ whatever\ the\ AnimatedActor\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment2.params=
 comment2.target=void\ setMyImage()
 comment3.params=direction
 comment3.target=void\ resetTimers(int)
-comment3.text=\r\n\ Resets\ array\ indexes\ and\ timers\ for\ animation\ purposes.\r\n\ currDirection\ should\ be\ the\ currDirection\ being\ currently\ animated.\r\n\ \r\n\ @param\ currDirection\ NORTH\ EAST\ WEST\ SOUTH\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ reset\ as\ idle.\r\n
+comment3.text=\n\ Resets\ array\ indexes\ and\ timers\ for\ animation\ purposes.\n\ currDirection\ should\ be\ the\ currDirection\ being\ currently\ animated.\n\ \n\ @param\ currDirection\ NORTH\ EAST\ WEST\ SOUTH\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ reset\ as\ idle.\n
 comment4.params=direction
 comment4.target=void\ resetIndexes(int)
-comment4.text=\r\n\ Resets\ array\ indexes\ and\ timers\ for\ animation\ purposes.\r\n\ currDirection\ should\ be\ the\ currDirection\ being\ currently\ animated.\r\n\ \r\n\ @param\ currDirection\ NORTH\ EAST\ WEST\ SOUTH\r\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ reset\ as\ idle.\r\n
+comment4.text=\n\ Resets\ array\ indexes\ and\ timers\ for\ animation\ purposes.\n\ currDirection\ should\ be\ the\ currDirection\ being\ currently\ animated.\n\ \n\ @param\ currDirection\ NORTH\ EAST\ WEST\ SOUTH\n\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \=>\ any\ other\ string\ will\ reset\ as\ idle.\n
 numComments=5

@@ -12,8 +12,10 @@ public class GrassWorld extends World
 {
     public Ogre ogre;
     public Face face;
-    public Intro intro;
-    public boolean hasStarted;
+    
+    public IntroImage introImg;
+    public boolean hasStarted1;
+    public boolean hasStarted2;
     
     public ImagePackage ogrePack;
     public ImagePackage knightPack;
@@ -61,10 +63,11 @@ public class GrassWorld extends World
         
         ogre = new Ogre(ogrePack, face);
         
-        hasStarted = false;
-        intro = new Intro();
-        hasStarted = false;
-        addObject(intro, 350, 300);
+        introImg = new IntroImage();
+        addObject(introImg,330,295);
+        
+        hasStarted1 = false;
+        hasStarted2 = false;
     }
     
     public void introPopulate() {
@@ -103,7 +106,13 @@ public class GrassWorld extends World
     }
 
     public void act() {
-        if (hasStarted){
+        if (!hasStarted1) {
+            keyPress(1);
+        }
+        else if (!hasStarted2) {
+            keyPress(2);
+        }
+        else if (hasStarted1 && hasStarted2){
             Enemy E;
             while ((BaddieCount <2) && (baddies.size()> 0)){
                 E=baddies.pop();
@@ -120,5 +129,29 @@ public class GrassWorld extends World
                 BaddieCount++;
             }
         }    
+    }
+
+    /* Which press tracks how many times they've click or pressed a key. */
+    public void keyPress(int whichPress) 
+    {
+        if( (Greenfoot.isKeyDown("up") ||
+            Greenfoot.isKeyDown("down") ||
+            Greenfoot.isKeyDown("left") ||
+            Greenfoot.isKeyDown("right") ||
+            Greenfoot.isKeyDown("a") ||
+            Greenfoot.isKeyDown("s") ||
+            Greenfoot.mouseClicked(introImg))
+          )
+        {
+            if (whichPress == 1) {
+                hasStarted1 = true;
+                introImg.switchImg();
+            }
+            if (whichPress == 2) {
+                hasStarted2 = true;
+                removeObject(introImg);
+                introPopulate();
+            }
+        }
     }
 }
