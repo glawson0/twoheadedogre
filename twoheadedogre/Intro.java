@@ -16,8 +16,8 @@ public class Intro extends Actor
     public static final int HEIGHT = 300;
 
     public Intro(){
-        getImage().scale(500, 400);
-        makeText("Starter");
+        //getImage().scale(500, 400);
+        //makeText("Starter");
     }
 
     /**
@@ -37,7 +37,7 @@ public class Intro extends Actor
         )
         {
             ((GrassWorld)getWorld()).hasStarted = true;
-	    ((GrassWorld)getWorld()).introPopulate();
+	        ((GrassWorld)getWorld()).introPopulate();
             getWorld().removeObject(this);
             started = true;
         }

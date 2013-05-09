@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class AnimatedActor here.
+ * Superclass pertaining to animating actors.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Robin Verweij 
+ * @version final!!?
  */
 public class AnimatedActor extends Actor
 {
@@ -135,7 +135,7 @@ public class AnimatedActor extends Actor
         }
     }
     
-        /**
+    /**
      * Resets array indexes and timers for animation purposes.
      * currDirection should be the currDirection being currently animated.
      * 

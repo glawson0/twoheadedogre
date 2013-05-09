@@ -14,16 +14,18 @@ public class GrassWorld extends World
     public Face face;
     public Intro intro;
     public boolean hasStarted;
+    
     public ImagePackage ogrePack;
     public ImagePackage knightPack;
     public ImagePackage archerPack;
-    /**
-     * Constructor for objects of class GrassWorld.
-     * 
-     */
+    
     private Random r;
     private LinkedList<Enemy> baddies;
     public int BaddieCount=0;
+
+    /**
+     * Constructor for objects of class GrassWorld.
+     */
     public GrassWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -70,6 +72,7 @@ public class GrassWorld extends World
         addObject(ogre, 350, 300);
         populate();
     }
+    
     public void populate(){
         baddies= makeEnemies(10);
         Enemy E;
@@ -100,23 +103,22 @@ public class GrassWorld extends World
     }
 
     public void act() {
-    if (hasStarted){
-        Enemy E;
-        while ((BaddieCount <2) && (baddies.size()> 0)){
-            E=baddies.pop();
-            switch(r.nextInt(4)){
-            case 0: addObject(E,0, r.nextInt(600));
-                    break;
-            case 1: addObject(E,700, r.nextInt(600));
-                    break;
-            case 2: addObject(E,r.nextInt(700),0);
-                    break;
-            case 3: addObject(E,r.nextInt(700),600);
-                    break;
+        if (hasStarted){
+            Enemy E;
+            while ((BaddieCount <2) && (baddies.size()> 0)){
+                E=baddies.pop();
+                switch(r.nextInt(4)){
+                case 0: addObject(E,0, r.nextInt(600));
+                        break;
+                case 1: addObject(E,700, r.nextInt(600));
+                        break;
+                case 2: addObject(E,r.nextInt(700),0);
+                        break;
+                case 3: addObject(E,r.nextInt(700),600);
+                        break;
+                }
+                BaddieCount++;
             }
-            BaddieCount++;
-        }
-    };
-            
+        }    
     }
 }

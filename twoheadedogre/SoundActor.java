@@ -3,8 +3,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Sound actor will play conflicting sounds, such as battle noises and deaths.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Robin Verweij
+ * @version not yet done
  */
 public class SoundActor extends AnimatedActor
 {
@@ -18,10 +18,6 @@ public class SoundActor extends AnimatedActor
         soundTimer = 0;
     }
     
-    /**
-     * Act - do whatever the SoundActor wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
     public void act() 
     {
         super.act();

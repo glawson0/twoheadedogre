@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class ImagePackage here.
+ * Holds all images pertaining to a certain actor's animation. 
+ * Can be shared between actors without synchronization of animations.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Robin Verweij
+ * @version 1
  */
 public class ImagePackage
 {    
