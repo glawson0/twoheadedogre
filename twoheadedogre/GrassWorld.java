@@ -16,6 +16,7 @@ public class GrassWorld extends World
     public boolean hasStarted;
     public ImagePackage ogrePack;
     public ImagePackage knightPack;
+    public ImagePackage archerPack;
     /**
      * Constructor for objects of class GrassWorld.
      * 
@@ -49,6 +50,12 @@ public class GrassWorld extends World
         knightPack.SetupAttackImage("knightdown4.png","down");
         knightPack.SetupAttackImage("knightleft3.png","left");
         knightPack.SetupAttackImage("knightright3.png","right");
+        
+        archerPack= new ImagePackage();
+        archerPack.SetupUpImages("archerup",".png",3);
+        archerPack.SetupDownImages("archerdown",".png",3);
+        archerPack.SetupLeftImages("archerleft",".png",2);
+        archerPack.SetupRightImages("archerright",".png",2);
         
         ogre = new Ogre(ogrePack, face);
         
@@ -85,7 +92,7 @@ public class GrassWorld extends World
     
     private LinkedList<Enemy> makeEnemies(int numE){
         LinkedList<Enemy> enemies= new LinkedList<Enemy>();
-        enemies.add( new Archer(new ImagePackage(), ogre));
+        enemies.add( new Archer(archerPack, ogre));
         for (int i=0; i< numE; i++){
             enemies.add(new Knight(knightPack, ogre));
         }
