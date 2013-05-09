@@ -3,5 +3,5 @@ comment0.params=
 comment0.target=DialogPackage()
 comment1.params=classType\ gordo
 comment1.target=void\ playDialog(java.lang.String,\ boolean)
-comment1.text=\r\n\ Must\ pass\ classType\ as\ a\ string\r\n\ \ ex\:\ playDialog("knight",face);\ for\ a\ knight\ spawning\ with\ dialog.\r\n\ Gordo\ is\ the\ face\ variable,\ telling\ us\ which\ ogre\ is\ being\ controlled\ at\ the\ moment.\r\n\ \ This\ allows\ us\ to\ switch\ between\ dialogs\ if\ we\ so\ wish.\r\n
+comment1.text=\n\ Must\ pass\ classType\ as\ a\ string\n\ \ ex\:\ playDialog("knight",face);\ for\ a\ knight\ spawning\ with\ dialog.\n\ Gordo\ is\ the\ face\ variable,\ telling\ us\ which\ ogre\ is\ being\ controlled\ at\ the\ moment.\n\ \ This\ allows\ us\ to\ switch\ between\ dialogs\ if\ we\ so\ wish.\n
 numComments=2
