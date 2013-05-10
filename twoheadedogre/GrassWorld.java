@@ -29,6 +29,8 @@ public class GrassWorld extends World
     private int cLevel=1;
     public DialogPackage voicePack;
     
+    public int HP=10;
+    public int Invinc=0;
    
 
     /**
@@ -74,7 +76,7 @@ public class GrassWorld extends World
         
         hasStarted1 = false;
         hasStarted2 = false;
-        
+        addObject(new HP(), 500,50);
         voicePack = new DialogPackage(r);
     }
     

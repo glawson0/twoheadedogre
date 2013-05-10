@@ -29,6 +29,10 @@ public class Enemy extends SoundActor
     }
     protected void checkCollision(){
         java.util.List <Actor> objs= getIntersectingObjects(Actor.class);
+        if (((GrassWorld)getWorld()).Invinc>0){
+            ((GrassWorld)getWorld()).Invinc--;
+        }
+        
         for(Actor obj: objs){
             if (obj instanceof Ogre){
                 Ogre O= (Ogre)obj;
@@ -76,6 +80,10 @@ public class Enemy extends SoundActor
                     y+=3;
                 }
                 setLocation(getX()+x, getY()+y);
+                if(((GrassWorld)getWorld()).Invinc ==0){
+                    ((GrassWorld)getWorld()).Invinc=30;
+                    ((GrassWorld)getWorld()).HP--;
+                }
             }
         }
     }
