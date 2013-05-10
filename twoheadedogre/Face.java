@@ -8,15 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Face extends Actor
 {
-    public boolean face;
-    private boolean pushed = false;
+   public boolean face;
+   private boolean pushed = false;
+   
    public Face(boolean face){
        this.face = face;
        change();
    }
+   
    public void act(){
         processKeys();
-    }
+   }
+   
    private void processKeys() {
        /* if(Greenfoot.isKeyDown("control") && !pushed) {
             face = !face;
@@ -26,14 +29,13 @@ public class Face extends Actor
         if(!Greenfoot.isKeyDown("control")){
             pushed = false;
         }*/
-    }
+   }
+   
    public void change(){
         if (face){
-            //Use Dimond
             setImage("Gordo.png");
         }
         else{
-            //Use Club
             setImage("Omak.png");
         }
     }

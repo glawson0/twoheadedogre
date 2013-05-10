@@ -1,3 +1,6 @@
+import greenfoot.*;
+import java.util.Random;
+
 /**
  * Dialog package is for storyline dialog.
  * 
@@ -45,20 +48,20 @@ public class DialogPackage
                 if (gordo) {
                     // Gordo
                     dialogPlaying = true;
-                    String whichOne = Int.toString(r.nextInt(10));
-                    playSound("gordo"+whichOne+".wav");
+                    String whichOne = Integer.toString(r.nextInt(10));
+                    Greenfoot.playSound("gordo"+whichOne+".wav");
                 }
                 else {
                     // Omak
                     dialogPlaying = true;
-                    String whichOne = Int.toString(r.nextInt(8));
-                    playSound("omak"+whichOne+".wav");
+                    String whichOne = Integer.toString(r.nextInt(8));
+                    Greenfoot.playSound("omak"+whichOne+".wav");
                 }
             }
             else if (classType.equals("knight") || classType.equals("archer")) {
                 dialogPlaying = true;
-                String whichOne = Int.toString(r.nextInt(7));
-                playSound("human"+whichOne+".wav");
+                String whichOne = Integer.toString(r.nextInt(7));
+                Greenfoot.playSound("human"+whichOne+".wav");
             }
         }
     }
