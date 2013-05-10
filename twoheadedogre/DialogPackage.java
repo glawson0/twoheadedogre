@@ -1,3 +1,6 @@
+import greenfoot.*;
+import java.util.Random;
+
 /**
  * Dialog package is for storyline dialog.
  * 
@@ -11,11 +14,27 @@ public class DialogPackage
      * When dialog is finished, set back to false.
      * This stops the problem of overlaying dialog.
      */
-    private boolean dialogPlaying;
+    private boolean ogreDialogPlaying;
+    private boolean humanDialogPlaying;
+    private Random r;
     
-    public DialogPackage()
+    private int currPlayedTime;
+    private final int soundPlayTime = 250;
+    
+    public DialogPackage(Random r)
     {
-        dialogPlaying = false;
+        this.r = r;
+        currPlayedTime = 0;
+        ogreDialogPlaying = false;
+        humanDialogPlaying = false;
+    }
+    
+    public void dialogAct() {
+        currPlayedTime = (currPlayedTime + 1) % soundPlayTime;
+        if (currPlayedTime == 0) {
+           ogreDialogPlaying = false;
+           humanDialogPlaying = false;
+        }
     }
     
     /**
@@ -25,31 +44,25 @@ public class DialogPackage
      *  This allows us to switch between dialogs if we so wish.
      */
     public void playDialog(String classType, boolean gordo) {
-        if (!dialogPlaying) {
-            if (classType.equals("ogre")) {
-                // randomly generate a number
-                // set dialogPlaying to true
-                // play a dialog corresponding to that number
-                // set dialogPlaying to false
-                if (gordo) {
-                    // Gordo (stuuuupid)
-                }
-                else {
-                    // Omak (smart.)
-                }
+        // randomly generate a number
+        // set dialogPlaying to true
+        // play a dialog corresponding to that number
+        if (!ogreDialogPlaying && classType.equals("ogre")) {
+            if (gordo) {
+               ogreDialogPlaying = true;
+               String whichOne = Integer.toString(r.nextInt(9));
+               Greenfoot.playSound("gordo"+whichOne+".wav");
             }
-            else if (classType.equals("knight")) {
-                // randomly generate a number
-                // set dialogPlaying to true
-                // play a dialog corresponding to that number
-                // set dialogPlaying to false
+            else {
+               ogreDialogPlaying = true;
+               String whichOne = Integer.toString(r.nextInt(8));
+               Greenfoot.playSound("omak"+whichOne+".wav");
             }
-            else if (classType.equals("archer")) {
-                // randomly generate a number
-                // set dialogPlaying to true
-                // play a dialog corresponding to that number
-                // set dialogPlaying to false
-            }
+        }
+        else if (!humanDialogPlaying && (classType.equals("knight") || classType.equals("archer"))) {
+            humanDialogPlaying = true;
+            String whichOne = Integer.toString(r.nextInt(7));
+            Greenfoot.playSound("human"+whichOne+".wav");
         }
     }
 }

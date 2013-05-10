@@ -104,9 +104,10 @@ public class Ogre extends SoundActor
     }
     private void switchHead(){
         if (Greenfoot.isKeyDown("s")){
-            gordo= !gordo;
+            gordo = !gordo;
             face.face=gordo;
             face.change();
+            ((GrassWorld)getWorld()).voicePack.playDialog("ogre",gordo);
         }
     }
     private void procInput(){

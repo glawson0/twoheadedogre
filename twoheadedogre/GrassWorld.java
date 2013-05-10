@@ -27,6 +27,9 @@ public class GrassWorld extends World
     public int BaddieCount=0;
     private int roundwait=0;
     private int cLevel=1;
+    public DialogPackage voicePack;
+    
+   
 
     /**
      * Constructor for objects of class GrassWorld.
@@ -71,6 +74,8 @@ public class GrassWorld extends World
         
         hasStarted1 = false;
         hasStarted2 = false;
+        
+        voicePack = new DialogPackage(r);
     }
     
     public void introPopulate() {
@@ -121,6 +126,8 @@ public class GrassWorld extends World
     }
 
     public void act() {
+        voicePack.dialogAct();
+        
         if (!hasStarted1) {
             keyPress(1);
         }
@@ -142,6 +149,10 @@ public class GrassWorld extends World
                         case 3: addObject(E,r.nextInt(700),600);
                             break;
                     }
+                    if (E instanceof Knight)
+                      voicePack.playDialog("knight",face.face);
+                    if (E instanceof Archer)
+                      voicePack.playDialog("archer",face.face);
                     BaddieCount++;
                 }
                 if(BaddieCount==0 && (levels.get(0).size()== 0)){
@@ -158,14 +169,7 @@ public class GrassWorld extends World
     /* Which press tracks how many times they've click or pressed a key. */
     public void keyPress(int whichPress) 
     {
-        if( (Greenfoot.isKeyDown("up") ||
-            Greenfoot.isKeyDown("down") ||
-            Greenfoot.isKeyDown("left") ||
-            Greenfoot.isKeyDown("right") ||
-            Greenfoot.isKeyDown("a") ||
-            Greenfoot.isKeyDown("s") ||
-            Greenfoot.mouseClicked(introImg))
-          )
+        if(Greenfoot.mouseClicked(introImg))
         {
             if (whichPress == 1) {
                 hasStarted1 = true;
