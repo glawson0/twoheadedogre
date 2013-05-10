@@ -33,7 +33,7 @@ public class GrassWorld extends World
     
     public int HP=10;
     public int Invinc=0;
-   
+    private boolean gameOver= false;
 
     /**
      * Constructor for objects of class GrassWorld.
@@ -136,6 +136,14 @@ public class GrassWorld extends World
     }
 
     public void act() {
+        if (HP<1){
+            gameOver=true;
+        }
+        
+        if (gameOver){
+            
+        }
+        
         if (!hasStarted1) {
             keyPress(1);
         }
