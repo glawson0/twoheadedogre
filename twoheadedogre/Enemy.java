@@ -8,10 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Enemy extends SoundActor
 {
-
+    private int aliveTimer;
     
     public Enemy(ImagePackage imgPack) {
        super(imgPack);
+       aliveTimer = 0;
     }
     
     /**
@@ -21,6 +22,10 @@ public class Enemy extends SoundActor
     public void act() 
     {
         super.act();
+	aliveTimer++;
+	if (aliveTimer > 150) {
+           ((GrassWorld)getWorld()).voicePack.playDialog("knight",false);
+	}
     }
     protected void checkCollision(){
         java.util.List <Actor> objs= getIntersectingObjects(Actor.class);
