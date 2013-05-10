@@ -14,7 +14,8 @@ public class DialogPackage
      * When dialog is finished, set back to false.
      * This stops the problem of overlaying dialog.
      */
-    private boolean dialogPlaying;
+    private boolean ogreDialogPlaying;
+    private boolean humanDialogPlaying;
     private Random r;
     
     private int currPlayedTime;
@@ -24,13 +25,16 @@ public class DialogPackage
     {
         this.r = r;
         currPlayedTime = 0;
-        dialogPlaying = false;
+        ogreDialogPlaying = false;
+        humanDialogPlaying = false;
     }
     
     public void dialogAct() {
         currPlayedTime = (currPlayedTime + 1) % soundPlayTime;
-        if (currPlayedTime == 0)
-           dialogPlaying = false;
+        if (currPlayedTime == 0) {
+           ogreDialogPlaying = false;
+           humanDialogPlaying = false;
+        }
     }
     
     /**
@@ -43,26 +47,22 @@ public class DialogPackage
         // randomly generate a number
         // set dialogPlaying to true
         // play a dialog corresponding to that number
-        if (!dialogPlaying) {
-            if (classType.equals("ogre")) {
-                if (gordo) {
-                    // Gordo
-                    dialogPlaying = true;
-                    String whichOne = Integer.toString(r.nextInt(10));
-                    Greenfoot.playSound("gordo"+whichOne+".wav");
-                }
-                else {
-                    // Omak
-                    dialogPlaying = true;
-                    String whichOne = Integer.toString(r.nextInt(8));
-                    Greenfoot.playSound("omak"+whichOne+".wav");
-                }
+        if (!ogreDialogPlaying && classType.equals("ogre")) {
+            if (gordo) {
+               ogreDialogPlaying = true;
+               String whichOne = Integer.toString(r.nextInt(9));
+               Greenfoot.playSound("gordo"+whichOne+".wav");
             }
-            else if (classType.equals("knight") || classType.equals("archer")) {
-                dialogPlaying = true;
-                String whichOne = Integer.toString(r.nextInt(7));
-                Greenfoot.playSound("human"+whichOne+".wav");
+            else {
+               ogreDialogPlaying = true;
+               String whichOne = Integer.toString(r.nextInt(8));
+               Greenfoot.playSound("omak"+whichOne+".wav");
             }
+        }
+        else if (!humanDialogPlaying && (classType.equals("knight") || classType.equals("archer"))) {
+            humanDialogPlaying = true;
+            String whichOne = Integer.toString(r.nextInt(7));
+            Greenfoot.playSound("human"+whichOne+".wav");
         }
     }
 }

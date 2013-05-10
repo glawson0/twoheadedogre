@@ -26,6 +26,8 @@ public class GrassWorld extends World
     public int BaddieCount=0;
     
     public DialogPackage voicePack;
+    
+   
 
     /**
      * Constructor for objects of class GrassWorld.
@@ -132,6 +134,10 @@ public class GrassWorld extends World
                 case 3: addObject(E,r.nextInt(700),600);
                         break;
                 }
+                if (E instanceof Knight)
+                    voicePack.playDialog("knight",face.face);
+                if (E instanceof Archer)
+                    voicePack.playDialog("archer",face.face);
                 BaddieCount++;
             }
         }    
