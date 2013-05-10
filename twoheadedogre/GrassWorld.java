@@ -31,7 +31,7 @@ public class GrassWorld extends World
     private int cLevel=1;
     public DialogPackage voicePack;
     
-    public int HP=10;
+    public int HP=20;
     public int Invinc=0;
     private boolean gameOver= false;
 
@@ -141,6 +141,10 @@ public class GrassWorld extends World
         }
         
         if (gameOver){
+            java.util.List <Actor> objs= getObjects(Actor.class);
+            for(Actor thisAct: objs)
+                removeObject(thisAct);
+                
             if (HP<1){
                 //bad end
                 introImg = new IntroImage(6);
@@ -194,6 +198,10 @@ public class GrassWorld extends World
                     hasStarted3 = false;
                     introImg = new IntroImage(cLevel);
                     addObject(introImg,350,300);
+                    
+                    java.util.List <Actor> objs = getObjects(Arrow.class);
+                    if (objs.size() > 0)
+                        removeObjects(objs);
                     
                     // this is here for is we want to narrate story boxes with voice
                     // dialogPlaying = new GreenfootSound("storyDialogX.wav");

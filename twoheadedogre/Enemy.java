@@ -73,7 +73,7 @@ public class Enemy extends SoundActor
                     }
                     setLocation(getX()+x, getY()+y);
                     if((this instanceof Knight) && (!O.isAttacking) && this.isAttacking &&((GrassWorld)getWorld()).Invinc ==0){
-                        ((GrassWorld)getWorld()).Invinc=60;
+                        ((GrassWorld)getWorld()).Invinc=80;
                         ((GrassWorld)getWorld()).HP--;
                     }
                 }

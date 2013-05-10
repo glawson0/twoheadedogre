@@ -18,11 +18,12 @@ public class Arrow extends Actor
         java.util.List <Ogre> objs= getIntersectingObjects(Ogre.class);
         for(Ogre o: objs){
             if(((GrassWorld)getWorld()).Invinc ==0){
-             ((GrassWorld)getWorld()).Invinc=60;
+             ((GrassWorld)getWorld()).Invinc=80;
              ((GrassWorld)getWorld()).HP--;
              getWorld().removeObject(this);
              return;
             }
+            getWorld().removeObject(this);
         }
     }    
 }
