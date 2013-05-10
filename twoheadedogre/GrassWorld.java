@@ -33,7 +33,7 @@ public class GrassWorld extends World
     
     public int HP=10;
     public int Invinc=0;
-   
+    private boolean gameOver= false;
 
     /**
      * Constructor for objects of class GrassWorld.
@@ -136,6 +136,24 @@ public class GrassWorld extends World
     }
 
     public void act() {
+        if (HP<1){
+            gameOver=true;
+        }
+        
+        if (gameOver){
+            if (HP<1){
+                //bad end
+                hasStarted3 = false;
+                introImg = new IntroImage(6);
+                addObject(introImg,350,300);
+            }else{
+                //good End
+                hasStarted3 = false;
+                introImg = new IntroImage(7);
+                addObject(introImg,350,300);
+            }
+        }
+        
         if (!hasStarted1) {
             keyPress(1);
         }
@@ -150,6 +168,10 @@ public class GrassWorld extends World
             voicePack.dialogAct();
             
             if (roundwait==0){
+                if( levels.size()==0){
+                    gameOver=true;
+                    return;
+                }
                 Enemy E;
                 while ((BaddieCount <(2*cLevel)) && (levels.get(0).size()> 0)){
                     E=levels.get(0).pop();
