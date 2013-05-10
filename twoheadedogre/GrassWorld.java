@@ -24,6 +24,8 @@ public class GrassWorld extends World
     private Random r;
     private LinkedList<Enemy> baddies;
     public int BaddieCount=0;
+    
+    DialogPackage voicePack;
 
     /**
      * Constructor for objects of class GrassWorld.
@@ -68,6 +70,8 @@ public class GrassWorld extends World
         
         hasStarted1 = false;
         hasStarted2 = false;
+        
+        voicePack = new DialogPackage(r);
     }
     
     public void introPopulate() {
@@ -106,6 +110,8 @@ public class GrassWorld extends World
     }
 
     public void act() {
+        voicePack.dialogAct();
+        
         if (!hasStarted1) {
             keyPress(1);
         }

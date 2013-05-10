@@ -12,10 +12,22 @@ public class DialogPackage
      * This stops the problem of overlaying dialog.
      */
     private boolean dialogPlaying;
+    private Random r;
     
-    public DialogPackage()
+    private int currPlayedTime;
+    private final int soundPlayTime = 250;
+    
+    public DialogPackage(Random r)
     {
+        this.r = r;
+        currPlayedTime = 0;
         dialogPlaying = false;
+    }
+    
+    public void dialogAct() {
+        currPlayedTime = (currPlayedTime + 1) % soundPlayTime;
+        if (currPlayedTime == 0)
+           dialogPlaying = false;
     }
     
     /**
@@ -25,30 +37,28 @@ public class DialogPackage
      *  This allows us to switch between dialogs if we so wish.
      */
     public void playDialog(String classType, boolean gordo) {
+        // randomly generate a number
+        // set dialogPlaying to true
+        // play a dialog corresponding to that number
         if (!dialogPlaying) {
             if (classType.equals("ogre")) {
-                // randomly generate a number
-                // set dialogPlaying to true
-                // play a dialog corresponding to that number
-                // set dialogPlaying to false
                 if (gordo) {
-                    // Gordo (stuuuupid)
+                    // Gordo
+                    dialogPlaying = true;
+                    String whichOne = Int.toString(r.nextInt(10));
+                    playSound("gordo"+whichOne+".wav");
                 }
                 else {
-                    // Omak (smart.)
+                    // Omak
+                    dialogPlaying = true;
+                    String whichOne = Int.toString(r.nextInt(8));
+                    playSound("omak"+whichOne+".wav");
                 }
             }
-            else if (classType.equals("knight")) {
-                // randomly generate a number
-                // set dialogPlaying to true
-                // play a dialog corresponding to that number
-                // set dialogPlaying to false
-            }
-            else if (classType.equals("archer")) {
-                // randomly generate a number
-                // set dialogPlaying to true
-                // play a dialog corresponding to that number
-                // set dialogPlaying to false
+            else if (classType.equals("knight") || classType.equals("archer")) {
+                dialogPlaying = true;
+                String whichOne = Int.toString(r.nextInt(7));
+                playSound("human"+whichOne+".wav");
             }
         }
     }
