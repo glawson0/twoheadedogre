@@ -143,8 +143,14 @@ public class GrassWorld extends World
         if (gameOver){
             if (HP<1){
                 //bad end
+                hasStarted3 = false;
+                introImg = new IntroImage(6);
+                addObject(introImg,350,300);
             }else{
                 //good End
+                hasStarted3 = false;
+                introImg = new IntroImage(7);
+                addObject(introImg,350,300);
             }
         }
         
