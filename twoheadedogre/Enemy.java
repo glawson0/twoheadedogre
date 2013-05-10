@@ -22,10 +22,11 @@ public class Enemy extends SoundActor
     public void act() 
     {
         super.act();
-	aliveTimer++;
-	if (aliveTimer > 150) {
+	    aliveTimer++;
+	    if (aliveTimer > 150) {
            ((GrassWorld)getWorld()).voicePack.playDialog("knight",false);
-	}
+           aliveTimer = 0;
+	    }
     }
     protected void checkCollision(){
         java.util.List <Actor> objs= getIntersectingObjects(Actor.class);
@@ -35,6 +36,7 @@ public class Enemy extends SoundActor
         
         for(Actor obj: objs){
             if (obj instanceof Ogre){
+                isAttacking = true;
                 Ogre O= (Ogre)obj;
                 boolean facingOK = false;
                 switch (O.currDirection){

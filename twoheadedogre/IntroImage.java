@@ -10,8 +10,12 @@ import java.awt.Font;
  */
 public class IntroImage extends Actor
 {
-    public IntroImage(){
+    public IntroImage() {
         setImage("introStory.png");
+    }
+    
+    public IntroImage(int waveCompleted) {
+        setImage("story"+waveCompleted+".png");
     }
     
     public void switchImg(){

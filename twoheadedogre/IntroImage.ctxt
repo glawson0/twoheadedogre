@@ -1,6 +1,8 @@
 #BlueJ class context
 comment0.params=
 comment0.target=IntroImage()
-comment1.params=
-comment1.target=void\ switchImg()
-numComments=2
+comment1.params=waveCompleted
+comment1.target=IntroImage(int)
+comment2.params=
+comment2.target=void\ switchImg()
+numComments=3

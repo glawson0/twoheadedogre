@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SoundActor extends AnimatedActor
 {
-    private static final int framesBetweenSound = 10;
+    private static final int framesBetweenSound = 30;
     private boolean soundPlayed;
     private int soundTimer;
     
@@ -27,10 +27,9 @@ public class SoundActor extends AnimatedActor
                 soundPlayed = false;
             }
         }
-        
-        if (Greenfoot.isKeyDown("a")) {
+        else if (isAttacking) {
             if (soundTimer == 0) {
-                //playAttackSound();
+                playAttackSound();
                 soundPlayed = true;
             }
         }
@@ -38,10 +37,13 @@ public class SoundActor extends AnimatedActor
     
     public void playAttackSound() {
         if (this instanceof Knight) {
-            Greenfoot.playSound("");
+            Greenfoot.playSound("swordSwing.wav");
         }
         else if (this instanceof Ogre) {
-            Greenfoot.playSound("");
+            Greenfoot.playSound("ogreHit.wav");
+        }
+        else if(this instanceof Archer) {
+            Greenfoot.playSound("arrowShot.wav");
         }
     }
 }

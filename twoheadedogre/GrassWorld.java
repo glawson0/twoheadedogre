@@ -16,6 +16,7 @@ public class GrassWorld extends World
     public IntroImage introImg;
     public boolean hasStarted1;
     public boolean hasStarted2;
+    public boolean hasStarted3;
     
     public ImagePackage ogrePack;
     public ImagePackage knightPack;
@@ -72,15 +73,17 @@ public class GrassWorld extends World
         ogre = new Ogre(ogrePack, face);
         
         introImg = new IntroImage();
-        addObject(introImg,330,295);
+        addObject(introImg,350,300);
         
         hasStarted1 = false;
         hasStarted2 = false;
-        addObject(new HP(), 500,50);
+        hasStarted3 = false;
+        
         voicePack = new DialogPackage(r);
     }
     
     public void introPopulate() {
+        addObject(new HP(), 500,50);
         addObject(face,50,50);
         addObject(ogre, 350, 300);
         makeLevels();
@@ -128,15 +131,19 @@ public class GrassWorld extends World
     }
 
     public void act() {
-        voicePack.dialogAct();
-        
         if (!hasStarted1) {
             keyPress(1);
         }
         else if (!hasStarted2) {
             keyPress(2);
+            hasStarted3 = true;
         }
-        else if (hasStarted1 && hasStarted2){
+        else if (!hasStarted3) {
+            keyPress(3);
+        }
+        else if (hasStarted1 && hasStarted2 && hasStarted3){
+            voicePack.dialogAct();
+            
             if (roundwait==0){
                 Enemy E;
                 while ((BaddieCount <(2*cLevel)) && (levels.get(0).size()> 0)){
@@ -158,6 +165,10 @@ public class GrassWorld extends World
                     BaddieCount++;
                 }
                 if(BaddieCount==0 && (levels.get(0).size()== 0)){
+                    hasStarted3 = false;
+                    introImg = new IntroImage(cLevel);
+                    addObject(introImg,350,300);
+                    
                     levels.remove();
                     roundwait=30;
                     cLevel+=1;
@@ -181,6 +192,10 @@ public class GrassWorld extends World
                 hasStarted2 = true;
                 removeObject(introImg);
                 introPopulate();
+            }
+            if (whichPress == 3) {
+                hasStarted3 = true;
+                removeObject(introImg);
             }
         }
     }
