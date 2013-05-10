@@ -70,6 +70,10 @@ public class GrassWorld extends World
         archerPack.SetupDownImages("archerdown",".png",3);
         archerPack.SetupLeftImages("archerleft",".png",2);
         archerPack.SetupRightImages("archerright",".png",2);
+        archerPack.SetupAttackImage("archerup1.png","up");
+        archerPack.SetupAttackImage("archerdown1.png","down");
+        archerPack.SetupAttackImage("archerleft1.png","left");
+        archerPack.SetupAttackImage("archerright1.png","right");
         
         ogre = new Ogre(ogrePack, face);
         
@@ -84,7 +88,7 @@ public class GrassWorld extends World
     }
     
     public void introPopulate() {
-        addObject(new HP(), 500,50);
+        addObject(new HP(), 600,60);
         addObject(face,50,50);
         addObject(ogre, 350, 300);
         makeLevels();

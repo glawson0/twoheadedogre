@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.lang.Math;
 /**
  * Write a description of class Enemy here.
  * 
@@ -22,11 +22,11 @@ public class Enemy extends SoundActor
     public void act() 
     {
         super.act();
-	    aliveTimer++;
-	    if (aliveTimer > 150) {
+        aliveTimer++;
+        if (aliveTimer > 150) {
            ((GrassWorld)getWorld()).voicePack.playDialog("knight",false);
            aliveTimer = 0;
-	    }
+        }
     }
     protected void checkCollision(){
         java.util.List <Actor> objs= getIntersectingObjects(Actor.class);
@@ -49,26 +49,35 @@ public class Enemy extends SoundActor
                     case WEST: facingOK= (getY()<O.getY()) ? true : false;
                                 break;
                 }
-                if (O.isAttacking && facingOK){
+                if ( O.isAttacking && (facingOK || (O.getX()==getX() ||O.getY()==getY()))){
                     ((GrassWorld)getWorld()).BaddieCount--;
                     getWorld().removeObject(this);
                     return;
                 }else{
+                    int xd= Math.abs(getX()-O.getX());
+                    int yd= Math.abs(getY()-O.getY());
                     int x=0;
                     int y=0;
-                    if( getX()< obj.getX()){
-                        x-=5;
-                    }else if( getX()> obj.getX()){
-                        x+=5;
-                    }
-                    if( getY()< obj.getY()){
-                        y-=5;
-                    }else if( getY()> obj.getY()){
-                        y+=5;
+                    if(xd>yd){
+                        if( getX()< obj.getX()){
+                            x-=5;
+                        }else if( getX()> obj.getX()){
+                            x+=5;
+                        }
+                    }else{
+                        if( getY()< obj.getY()){
+                            y-=5;
+                        }else if( getY()> obj.getY()){
+                            y+=5;
+                        }
                     }
                     setLocation(getX()+x, getY()+y);
+                    if((this instanceof Knight) && this.isAttacking &&((GrassWorld)getWorld()).Invinc ==0){
+                        ((GrassWorld)getWorld()).Invinc=60;
+                        ((GrassWorld)getWorld()).HP--;
+                    }
                 }
-            }else{
+            }else if(obj instanceof Enemy){
                 int x=0;
                 int y=0;
                 if( getX()< obj.getX()){
@@ -82,10 +91,7 @@ public class Enemy extends SoundActor
                     y+=3;
                 }
                 setLocation(getX()+x, getY()+y);
-                if(((GrassWorld)getWorld()).Invinc ==0){
-                    ((GrassWorld)getWorld()).Invinc=30;
-                    ((GrassWorld)getWorld()).HP--;
-                }
+                
             }
         }
     }

@@ -73,7 +73,7 @@ public class Ogre extends SoundActor
                 if(x2>0){
                     currDirection=WEST;
                     dir=WEST;
-                }else{
+                }else if (x2< 0){
                     currDirection=EAST;
                     dir=EAST;
                 }
@@ -81,7 +81,7 @@ public class Ogre extends SoundActor
                 if(y2>0){
                     currDirection=NORTH;
                     dir=NORTH;
-                }else{
+                }else if (y2< 0){
                     currDirection=SOUTH;
                     dir=SOUTH;
                 }
@@ -90,14 +90,14 @@ public class Ogre extends SoundActor
             int x=0;
             int y=0;
             if(x2>0){
-                x-=5;
+                x-=x2>5?5:x2;
             }else if(x2<0){
-                x+=5;
+                x+= x2<5?5:x2;
             }
             if(y2>0){
-                y-=5;
+                y-= y2>5?5:y2;
             }else if(y2<0){
-                y+=5;
+                y+=y2<5?5:y2;
             }
             setLocation(getX()+x,getY()+y);
         }

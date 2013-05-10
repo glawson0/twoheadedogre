@@ -26,17 +26,17 @@ public class Knight extends Enemy
     private void move(){
         int x=0;
         int y=0;
-        if (ogre.getX()< getX() ){
+        if (ogre.getX()+1< getX() ){
             x-=2;
             currDirection=WEST;
-        }else if (ogre.getX()> getX() ){
+        }else if (ogre.getX()-1> getX() ){
             x+=2;
             currDirection=EAST;
         }
-        if (ogre.getY()< getY() ){
+        if (ogre.getY()+1< getY() ){
             y-=2;
             currDirection=NORTH;
-        }else if (ogre.getY()> getY() ){
+        }else if (ogre.getY()-1> getY() ){
             y+=2;
             currDirection=SOUTH;
         }
