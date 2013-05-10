@@ -1,9 +1,7 @@
 #BlueJ class context
-comment0.params=r
-comment0.target=DialogPackage(java.util.Random)
-comment1.params=
-comment1.target=void\ dialogAct()
-comment2.params=classType\ gordo
-comment2.target=void\ playDialog(java.lang.String,\ boolean)
-comment2.text=\n\ Must\ pass\ classType\ as\ a\ string\n\ \ ex\:\ playDialog("knight",face);\ for\ a\ knight\ spawning\ with\ dialog.\n\ Gordo\ is\ the\ face\ variable,\ telling\ us\ which\ ogre\ is\ being\ controlled\ at\ the\ moment.\n\ \ This\ allows\ us\ to\ switch\ between\ dialogs\ if\ we\ so\ wish.\n
-numComments=3
+comment0.params=
+comment0.target=DialogPackage()
+comment1.params=classType\ gordo
+comment1.target=void\ playDialog(java.lang.String,\ boolean)
+comment1.text=\n\ Must\ pass\ classType\ as\ a\ string\n\ \ ex\:\ playDialog("knight",face);\ for\ a\ knight\ spawning\ with\ dialog.\n\ Gordo\ is\ the\ face\ variable,\ telling\ us\ which\ ogre\ is\ being\ controlled\ at\ the\ moment.\n\ \ This\ allows\ us\ to\ switch\ between\ dialogs\ if\ we\ so\ wish.\n
+numComments=2
