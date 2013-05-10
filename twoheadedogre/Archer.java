@@ -62,7 +62,7 @@ public class Archer extends Enemy
                 Arrow A= new Arrow();
                 getWorld().addObject(A,getX(),getY());
                 A.turnTowards(ogre.getX(),ogre.getY());
-                attackTimer=15;
+                attackTimer=40;
             }
         }
     }

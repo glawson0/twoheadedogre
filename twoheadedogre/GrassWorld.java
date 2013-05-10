@@ -22,9 +22,11 @@ public class GrassWorld extends World
     public ImagePackage archerPack;
     
     private Random r;
+    private LinkedList<LinkedList<Enemy>> levels;
     private LinkedList<Enemy> baddies;
     public int BaddieCount=0;
-    
+    private int roundwait=0;
+    private int cLevel=1;
     public DialogPackage voicePack;
     
    
@@ -79,11 +81,11 @@ public class GrassWorld extends World
     public void introPopulate() {
         addObject(face,50,50);
         addObject(ogre, 350, 300);
-        populate();
+        makeLevels();
     }
     
     public void populate(){
-        baddies= makeEnemies(10);
+        makeLevels();
         Enemy E;
         while( baddies.size()>7){
             E=baddies.pop();
@@ -102,11 +104,23 @@ public class GrassWorld extends World
         
     }
     
+    private void makeLevels(){
+        int levelcount=5;
+        int baseEnemies=6;
+        levels=new LinkedList<LinkedList<Enemy>>();
+        
+        for (int i=1; i<=5; i++){
+            levels.addLast(makeEnemies(6*i));
+        }
+    }
+    
     private LinkedList<Enemy> makeEnemies(int numE){
         LinkedList<Enemy> enemies= new LinkedList<Enemy>();
-        enemies.add( new Archer(archerPack, ogre));
+        
         for (int i=0; i< numE; i++){
             enemies.add(new Knight(knightPack, ogre));
+            if(i%5==0)
+                enemies.add( new Archer(archerPack, ogre));
         }
         return enemies;
     }
@@ -121,24 +135,33 @@ public class GrassWorld extends World
             keyPress(2);
         }
         else if (hasStarted1 && hasStarted2){
-            Enemy E;
-            while ((BaddieCount <2) && (baddies.size()> 0)){
-                E=baddies.pop();
-                switch(r.nextInt(4)){
-                case 0: addObject(E,0, r.nextInt(600));
-                        break;
-                case 1: addObject(E,700, r.nextInt(600));
-                        break;
-                case 2: addObject(E,r.nextInt(700),0);
-                        break;
-                case 3: addObject(E,r.nextInt(700),600);
-                        break;
+            if (roundwait==0){
+                Enemy E;
+                while ((BaddieCount <(2*cLevel)) && (levels.get(0).size()> 0)){
+                    E=levels.get(0).pop();
+                    switch(r.nextInt(4)){
+                        case 0: addObject(E,0, r.nextInt(600));
+                            break;
+                        case 1: addObject(E,700, r.nextInt(600));
+                            break;
+                        case 2: addObject(E,r.nextInt(700),0);
+                            break;
+                        case 3: addObject(E,r.nextInt(700),600);
+                            break;
+                    }
+                    if (E instanceof Knight)
+                      voicePack.playDialog("knight",face.face);
+                    if (E instanceof Archer)
+                      voicePack.playDialog("archer",face.face);
+                    BaddieCount++;
                 }
-                if (E instanceof Knight)
-                    voicePack.playDialog("knight",face.face);
-                if (E instanceof Archer)
-                    voicePack.playDialog("archer",face.face);
-                BaddieCount++;
+                if(BaddieCount==0 && (levels.get(0).size()== 0)){
+                    levels.remove();
+                    roundwait=30;
+                    cLevel+=1;
+                }
+            }else{
+                roundwait--;
             }
         }    
     }
