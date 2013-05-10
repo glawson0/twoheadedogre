@@ -17,6 +17,7 @@ public class GrassWorld extends World
     public boolean hasStarted1;
     public boolean hasStarted2;
     public boolean hasStarted3;
+    public GreenfootSound dialogPlaying;
     
     public ImagePackage ogrePack;
     public ImagePackage knightPack;
@@ -169,6 +170,10 @@ public class GrassWorld extends World
                     introImg = new IntroImage(cLevel);
                     addObject(introImg,350,300);
                     
+                    // this is here for is we want to narrate story boxes with voice
+                    // dialogPlaying = new GreenfootSound("storyDialogX.wav");
+                    // dialogPlaying.play();
+                    
                     levels.remove();
                     roundwait=30;
                     cLevel+=1;
@@ -196,6 +201,7 @@ public class GrassWorld extends World
             if (whichPress == 3) {
                 hasStarted3 = true;
                 removeObject(introImg);
+                // dialogPlaying.stop();
             }
         }
     }
