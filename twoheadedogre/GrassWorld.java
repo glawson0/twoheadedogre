@@ -141,7 +141,11 @@ public class GrassWorld extends World
         }
         
         if (gameOver){
-            
+            if (HP<1){
+                //bad end
+            }else{
+                //good End
+            }
         }
         
         if (!hasStarted1) {
@@ -158,6 +162,10 @@ public class GrassWorld extends World
             voicePack.dialogAct();
             
             if (roundwait==0){
+                if( levels.size()==0){
+                    gameOver=true;
+                    return;
+                }
                 Enemy E;
                 while ((BaddieCount <(2*cLevel)) && (levels.get(0).size()> 0)){
                     E=levels.get(0).pop();
