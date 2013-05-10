@@ -14,26 +14,23 @@ public class DialogPackage
      * When dialog is finished, set back to false.
      * This stops the problem of overlaying dialog.
      */
-    private boolean ogreDialogPlaying;
-    private boolean humanDialogPlaying;
+    private boolean dialogPlaying;
     private Random r;
     
     private int currPlayedTime;
-    private final int soundPlayTime = 250;
+    private final int soundPlayTime = 150;
     
     public DialogPackage(Random r)
     {
         this.r = r;
         currPlayedTime = 0;
-        ogreDialogPlaying = false;
-        humanDialogPlaying = false;
+        dialogPlaying = false;
     }
     
     public void dialogAct() {
         currPlayedTime = (currPlayedTime + 1) % soundPlayTime;
         if (currPlayedTime == 0) {
-           ogreDialogPlaying = false;
-           humanDialogPlaying = false;
+           dialogPlaying = false;
         }
     }
     
@@ -47,20 +44,20 @@ public class DialogPackage
         // randomly generate a number
         // set dialogPlaying to true
         // play a dialog corresponding to that number
-        if (!ogreDialogPlaying && classType.equals("ogre")) {
+        if (!dialogPlaying && classType.equals("ogre")) {
             if (gordo) {
-               ogreDialogPlaying = true;
+               dialogPlaying = true;
                String whichOne = Integer.toString(r.nextInt(9));
                Greenfoot.playSound("gordo"+whichOne+".wav");
             }
             else {
-               ogreDialogPlaying = true;
+               dialogPlaying = true;
                String whichOne = Integer.toString(r.nextInt(8));
                Greenfoot.playSound("omak"+whichOne+".wav");
             }
         }
-        else if (!humanDialogPlaying && (classType.equals("knight") || classType.equals("archer"))) {
-            humanDialogPlaying = true;
+        else if (!dialogPlaying && (classType.equals("knight") || classType.equals("archer"))) {
+            dialogPlaying = true;
             String whichOne = Integer.toString(r.nextInt(7));
             Greenfoot.playSound("human"+whichOne+".wav");
         }
